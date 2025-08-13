@@ -25,6 +25,9 @@ sns.set_palette("husl")
 # Suppress warnings
 warnings.filterwarnings('ignore')
 
+# Datasets to exclude from analysis (accuracy calculation needs to be figured out)
+EXCLUDED_DATASETS = {'life_eval', 'halu_eval_qa'}
+
 def extract_model_and_dataset(filename: str) -> Tuple[str, str]:
     """Extract model name and dataset name from filename."""
     # Handle deepseek files
@@ -548,6 +551,11 @@ def find_csv_files() -> List[Tuple[str, str, str]]:
                     if csv_file.is_file() and csv_file.name.endswith('_processed.csv'):
                         # Extract dataset name from filename (remove _processed.csv suffix)
                         dataset_name = csv_file.stem.replace('_processed', '')
+                        
+                        # Skip excluded datasets
+                        if dataset_name in EXCLUDED_DATASETS:
+                            continue
+                            
                         csv_files.append((str(csv_file), model_name, dataset_name))
     
     return csv_files

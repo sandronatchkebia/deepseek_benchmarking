@@ -22,6 +22,9 @@ import re
 # GitHub repository base URL for downloading formatted benchmarks with correct answers
 GITHUB_PROMPT_BASE = "https://raw.githubusercontent.com/NoamMichael/Comparing-Confidence-in-LLMs/refs/heads/main/Formatted%20Benchmarks"
 
+# Datasets to exclude from processing (accuracy calculation needs to be figured out)
+EXCLUDED_DATASETS = {'life_eval', 'halu_eval_qa'}
+
 def download_correct_answers(dataset_name: str) -> Dict[int, str]:
     """
     Download correct answers from GitHub repository.
@@ -200,6 +203,11 @@ def find_and_process_files():
                         else:
                             dataset_name = filename
                         
+                        # Skip excluded datasets
+                        if dataset_name in EXCLUDED_DATASETS:
+                            print(f"    Skipping {dataset_name} (excluded from processing)...")
+                            continue
+                            
                         print(f"    Processing {dataset_name}...")
                         
                         # Process the file
@@ -240,6 +248,11 @@ def find_and_process_files():
                                 else:
                                     dataset_name = filename
                                 
+                                # Skip excluded datasets
+                                if dataset_name in EXCLUDED_DATASETS:
+                                    print(f"      Skipping {dataset_name} (excluded from processing)...")
+                                    continue
+                                    
                                 print(f"      Processing {dataset_name}...")
                                 
                                 # Process the file
