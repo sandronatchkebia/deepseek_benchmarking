@@ -26,7 +26,7 @@ venv/
 env/
 ENV/
 .venv/
-.env/
+.env
 
 # IDE
 .vscode/
@@ -56,7 +56,6 @@ data/full/
 data/otherllms/
 
 # Exclude metadata and sample files
-prompts_metadata.json
 data/samples/
 
 # Logs
