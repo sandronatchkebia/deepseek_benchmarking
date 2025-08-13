@@ -105,6 +105,13 @@ def parse_entry(entry: Dict[str, Any], dataset_name: str, model_name: str) -> Di
     # Determine dataset type
     task_type = detect_dataset_type(dataset_name)
     
+    # Extract finish_reason to track incomplete responses
+    finish_reason = "stop"  # Default to complete
+    if isinstance(raw_content, dict):
+        choices = raw_content.get('choices', [])
+        if choices and len(choices) > 0:
+            finish_reason = choices[0].get('finish_reason', 'stop')
+    
     # Create base row
     wide_row = {
         "Question ID": qid,
@@ -114,6 +121,8 @@ def parse_entry(entry: Dict[str, Any], dataset_name: str, model_name: str) -> Di
         "coerce": coerced,
         "Reasoning": reasoning,
         "Answer": answer,
+        "finish_reason": finish_reason,
+        "is_incomplete": (finish_reason == 'length'),
     }
     
     # Add dataset-specific columns

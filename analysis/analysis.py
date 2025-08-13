@@ -91,6 +91,7 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
     token_probs = []
     correctness_list = []
     correct_answers = 0
+    incomplete_responses = 0  # Track responses that hit max_token limits
     
     # Check if required columns exist
     has_answer_col = 'answer' in df.columns
@@ -100,6 +101,13 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
     has_token_prob_col = 't1_prob' in df.columns
     
     for _, row in df.iterrows():
+        # Check if this response hit the max_token limit (incomplete)
+        is_incomplete = False
+        if 'is_incomplete' in df.columns and pd.notna(row['is_incomplete']):
+            is_incomplete = bool(row['is_incomplete'])
+            if is_incomplete:
+                incomplete_responses += 1
+        
         # Check if answer is correct by comparing with correct_answer column
         model_answer = None
         if has_answer_col:
@@ -107,7 +115,10 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
         elif has_answer_col_cap:
             model_answer = str(row['Answer']).strip()
         
-        if model_answer and pd.notna(row['correct_answer']):
+        if is_incomplete:
+            # Skip incomplete responses from accuracy calculation
+            correctness_list.append(None)  # Use None to indicate incomplete
+        elif model_answer and pd.notna(row['correct_answer']):
             correct_answer = str(row['correct_answer']).strip()
             is_correct = model_answer == correct_answer
             correctness_list.append(is_correct)
@@ -140,7 +151,14 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
                 pass
     
     metrics['correct_answers'] = correct_answers
-    metrics['accuracy'] = (correct_answers / metrics['questions_asked']) * 100
+    metrics['incomplete_responses'] = incomplete_responses
+    metrics['valid_responses'] = metrics['questions_asked'] - incomplete_responses
+    
+    # Calculate accuracy based on valid responses only (exclude incomplete ones)
+    if metrics['valid_responses'] > 0:
+        metrics['accuracy'] = (correct_answers / metrics['valid_responses']) * 100
+    else:
+        metrics['accuracy'] = 0.0
     
     # Stated confidence metrics
     if stated_confidences:
@@ -164,8 +182,14 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
     
     # Expected Calibration Error (ECE)
     if stated_confidences and correctness_list:
-        ece = compute_ece(stated_confidences, correctness_list)
-        metrics['ece'] = ece
+        # Filter out incomplete responses (None values) for ECE calculation
+        valid_indices = [i for i, correct in enumerate(correctness_list) if correct is not None]
+        if valid_indices and len(valid_indices) == len(stated_confidences):
+            valid_correctness = [correctness_list[i] for i in valid_indices]
+            ece = compute_ece(stated_confidences, valid_correctness)
+            metrics['ece'] = ece
+        else:
+            metrics['ece'] = np.nan
     else:
         metrics['ece'] = np.nan
     
@@ -190,25 +214,37 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
         metrics['overconfidence'] = np.nan
     
     # Correlations
-    if stated_confidences and correctness_list and len(stated_confidences) == len(correctness_list):
-        # Convert correctness to numeric (True=1, False=0)
-        correctness_numeric = [1 if c else 0 for c in correctness_list]
-        try:
-            correlation = np.corrcoef(stated_confidences, correctness_numeric)[0, 1]
-            metrics['confidence_correctness_corr'] = correlation if not np.isnan(correlation) else np.nan
-        except:
+    if stated_confidences and correctness_list:
+        # Filter out incomplete responses (None values) for correlation calculation
+        valid_indices = [i for i, correct in enumerate(correctness_list) if correct is not None]
+        if valid_indices and len(valid_indices) == len(stated_confidences):
+            valid_correctness = [correctness_list[i] for i in valid_indices]
+            # Convert correctness to numeric (True=1, False=0)
+            correctness_numeric = [1 if c else 0 for c in valid_correctness]
+            try:
+                correlation = np.corrcoef(stated_confidences, correctness_numeric)[0, 1]
+                metrics['confidence_correctness_corr'] = correlation if not np.isnan(correlation) else np.nan
+            except:
+                metrics['confidence_correctness_corr'] = np.nan
+        else:
             metrics['confidence_correctness_corr'] = np.nan
     else:
         metrics['confidence_correctness_corr'] = np.nan
     
     # Token probability correlation with correctness
-    if token_probs and correctness_list and len(token_probs) == len(correctness_list):
-        # Convert correctness to numeric (True=1, False=0)
-        correctness_numeric = [1 if c else 0 for c in correctness_list]
-        try:
-            correlation = np.corrcoef(token_probs, correctness_numeric)[0, 1]
-            metrics['token_prob_correctness_corr'] = correlation if not np.isnan(correlation) else np.nan
-        except:
+    if token_probs and correctness_list:
+        # Filter out incomplete responses (None values) for correlation calculation
+        valid_indices = [i for i, correct in enumerate(correctness_list) if correct is not None]
+        if valid_indices and len(valid_indices) == len(token_probs):
+            valid_correctness = [correctness_list[i] for i in valid_indices]
+            # Convert correctness to numeric (True=1, False=0)
+            correctness_numeric = [1 if c else 0 for c in valid_correctness]
+            try:
+                correlation = np.corrcoef(token_probs, correctness_numeric)[0, 1]
+                metrics['token_prob_correctness_corr'] = correlation if not np.isnan(correlation) else np.nan
+            except:
+                metrics['token_prob_correctness_corr'] = np.nan
+        else:
             metrics['token_prob_correctness_corr'] = np.nan
     else:
         metrics['token_prob_correctness_corr'] = np.nan
@@ -613,9 +649,10 @@ def main():
         # Reorder columns for better readability
         column_order = [
             'model', 'dataset', 'questions_asked', 'responses_formatted_correctly_pct',
-            'correct_answers', 'accuracy', 'min_confidence', 'max_confidence',
-            'avg_confidence', 'std_confidence', 'avg_token_prob', 'std_token_prob',
-            'ece', 'overconfidence', 'confidence_correctness_corr', 'token_prob_correctness_corr',
+            'correct_answers', 'incomplete_responses', 'valid_responses', 'accuracy', 
+            'min_confidence', 'max_confidence', 'avg_confidence', 'std_confidence', 
+            'avg_token_prob', 'std_token_prob', 'ece', 'overconfidence', 
+            'confidence_correctness_corr', 'token_prob_correctness_corr',
             'confidence_token_prob_mae', 'avg_gini'
         ]
         
