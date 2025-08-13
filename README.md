@@ -19,12 +19,14 @@ This repository contains tools and parsed results for analyzing LLM confidence c
 ```
 ├── deepseek_parsing.py          # Main parsing script
 ├── data/
-│   └── parsed/                  # Parsed CSV outputs
-│       ├── sat_en_deepseek-chat_results_wide.csv
-│       ├── lsat_ar_test_deepseek-chat_results_wide.csv
-│       ├── sciq_test_deepseek-chat_results_wide.csv
-│       ├── halu_eval_qa_deepseek-chat_results_wide.csv
-│       └── life_eval_deepseek-chat_results_wide.csv
+│   └── parsed/                  # Parsed CSV outputs organized by model version
+│       ├── deepseek_v3/         # DeepSeek v3 model results
+│       │   ├── sat_en_deepseek-chat_results_wide.csv
+│       │   ├── lsat_ar_test_deepseek-chat_results_wide.csv
+│       │   ├── sciq_test_deepseek-chat_results_wide.csv
+│       │   ├── halu_eval_qa_deepseek-chat_results_wide.csv
+│       │   └── life_eval_deepseek-chat_results_wide.csv
+│       └── deepseek_r1/         # DeepSeek r1 model results (coming soon)
 └── README.md
 ```
 
@@ -39,11 +41,11 @@ python3 deepseek_parsing.py --infile <input_file> --dataset <dataset_name> --mod
 ### Examples
 
 ```bash
-# Parse SAT-EN dataset
-python3 deepseek_parsing.py --infile path/to/sat_en_deepseek-chat_results.json --dataset SAT-EN --model deepseek-chat
+# Parse SAT-EN dataset and save to deepseek_v3 folder
+python3 deepseek_parsing.py --infile path/to/sat_en_deepseek-chat_results.json --dataset SAT-EN --model deepseek-chat --output_dir data/parsed/deepseek_v3
 
-# Parse with custom output directory
-python3 deepseek_parsing.py --infile path/to/lsat_ar_test_deepseek-chat_results.json --dataset LSAT-AR --model deepseek-chat --output_dir data/parsed
+# Parse with custom output directory for different model versions
+python3 deepseek_parsing.py --infile path/to/lsat_ar_test_deepseek-chat_results.json --dataset LSAT-AR --model deepseek-chat --output_dir data/parsed/deepseek_r1
 ```
 
 ### Arguments
@@ -65,6 +67,13 @@ python3 deepseek_parsing.py --infile path/to/lsat_ar_test_deepseek-chat_results.
 
 ### Numeric
 - **LifeEval**: Life evaluation questions with numeric estimates and confidence intervals
+
+## 🏗️ Model Version Organization
+
+Results are organized by model version to facilitate comparison and analysis:
+
+- **`deepseek_v3/`**: Current DeepSeek v3 model results (5 datasets)
+- **`deepseek_r1/`**: Future DeepSeek r1 model results (planned)
 
 ## 🔍 Output Format
 
