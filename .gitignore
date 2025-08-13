@@ -55,6 +55,10 @@ Thumbs.db
 data/full/
 data/otherllms/
 
+# Exclude metadata and sample files
+prompts_metadata.json
+data/samples/
+
 # Logs
 *.log
 
