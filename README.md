@@ -17,25 +17,51 @@ This repository contains tools and parsed results for analyzing LLM confidence c
 ## 📁 Repository Structure
 
 ```
-├── deepseek_parsing.py          # Main parsing script
+├── deepseek_parsing.py              # Main parsing script for V3 model (with logprobs)
+├── deepseek_parsing_reasoning.py    # Parsing script for R1 model (reasoning only)
+├── inference/
+│   └── deepseek.py                  # Async inference script for API calls
 ├── data/
-│   └── parsed/                  # Parsed CSV outputs organized by model version
-│       ├── deepseek_v3/         # DeepSeek v3 model results
+│   └── parsed/                      # Parsed CSV outputs organized by model version
+│       ├── deepseek_v3/             # DeepSeek v3 model results (with logprobs)
 │       │   ├── sat_en_deepseek-chat_results_wide.csv
 │       │   ├── lsat_ar_test_deepseek-chat_results_wide.csv
 │       │   ├── sciq_test_deepseek-chat_results_wide.csv
 │       │   ├── halu_eval_qa_deepseek-chat_results_wide.csv
-│       │   └── life_eval_deepseek-chat_results_wide.csv
-│       └── deepseek_r1/         # DeepSeek r1 model results (coming soon)
+│       │   ├── life_eval_deepseek-chat_results_wide.csv
+│       │   └── boolq_valid_deepseek-chat_results_wide.csv
+│       └── deepseek_r1/             # DeepSeek R1 model results (reasoning only)
+│           └── sat_en_deepseek-reasoner_reasoning_results_wide.csv
 └── README.md
 ```
 
 ## 🛠️ Usage
 
+### Parsing Scripts
+
+This repository contains two specialized parsing scripts:
+
+1. **`deepseek_parsing.py`** - For DeepSeek V3 model outputs
+   - Extracts token-level probabilities (logprobs)
+   - Includes alternative token analysis
+   - Best for confidence calibration research
+
+2. **`deepseek_parsing_reasoning.py`** - For DeepSeek R1 model outputs  
+   - Focuses on reasoning quality and answer extraction
+   - No logprob dependencies (R1 API doesn't support them)
+   - Best for reasoning analysis and answer accuracy
+
 ### Basic Usage
 
 ```bash
-python3 deepseek_parsing.py --infile <input_file> --dataset <dataset_name> --model <model_name>
+# Parse V3 model outputs (with logprobs)
+python3 deepseek_parsing.py --infile <input_file> --dataset <dataset_name> --model deepseek-chat
+
+# Parse R1 model outputs (reasoning only)
+python3 deepseek_parsing_reasoning.py --infile <input_file> --dataset <dataset_name> --model deepseek-reasoner
+
+# Parse with custom output directory
+python3 deepseek_parsing.py --infile <input_file> --dataset <dataset_name> --model <model_name> --output_dir data/parsed/deepseek_v3
 ```
 
 ### Examples
