@@ -35,10 +35,10 @@ DATASETS = [
 ]
 
 DATASETS = [
-    "halu_eval_qa"
+    "boolq_valid"
 ]
 
-SAVE_DIR = "../data/full/deepseek_r1"
+SAVE_DIR = "data/full/deepseek_r1"
 #os.makedirs(SAVE_DIR, exist_ok=True)
 
 def download_prompt_csv(dataset_name):
@@ -449,7 +449,7 @@ functions_map = {
 }
 
 
-def format_prompts(question_set_dict, metadata_path="../prompts_metadata.json"):
+def format_prompts(question_set_dict, metadata_path="prompts_metadata.json"):
     """
     Processes a list of DataFrames to format prompts using metadata.
 
@@ -517,7 +517,7 @@ async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=12
 
 async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=MODEL_NAME, concurrency=16, request_timeout=120):
     results = []
-    max_token_hits = 20
+    max_token_hits = 0
     abort_on_token_limit = True  # Set to False if you want to continue despite token limits
     should_abort = False
 
@@ -544,7 +544,7 @@ async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=M
                 print(f"\n⚠️  QID {qid} hit max_token limit (total: {max_token_hits})")
                 
                 # If this is the first token limit hit and we want to abort, stop processing
-                if abort_on_token_limit and max_token_hits == 1:
+                if abort_on_token_limit and max_token_hits == 20:
                     print(f"\n🚨 Aborting processing due to token limit hit. Saving partial results...")
                     should_abort = True
                     return "ABORT_TOKEN_LIMIT"

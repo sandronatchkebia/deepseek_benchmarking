@@ -77,9 +77,16 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
         metrics['responses_formatted_correctly'] = len(df)  # Assume all are formatted correctly
         metrics['responses_formatted_correctly_pct'] = 100.0
     
-    # Extract stated confidence and token probabilities
+    # Check if we have the correct_answer column (from processed data)
+    has_correct_answer = 'correct_answer' in df.columns
+    if not has_correct_answer:
+        print("Warning: No correct_answer column found. Cannot compute accuracy metrics.")
+        return metrics
+    
+    # Extract stated confidence, token probabilities, and compute accuracy
     stated_confidences = []
     token_probs = []
+    correctness_list = []
     correct_answers = 0
     
     # Check if required columns exist
@@ -90,13 +97,21 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
     has_token_prob_col = 't1_prob' in df.columns
     
     for _, row in df.iterrows():
-        # Check if answer is correct
-        if has_answer_col and has_answer_col_cap:
-            try:
-                if str(row['answer']).strip() == str(row['Answer']).strip():
-                    correct_answers += 1
-            except:
-                pass
+        # Check if answer is correct by comparing with correct_answer column
+        model_answer = None
+        if has_answer_col:
+            model_answer = str(row['answer']).strip()
+        elif has_answer_col_cap:
+            model_answer = str(row['Answer']).strip()
+        
+        if model_answer and pd.notna(row['correct_answer']):
+            correct_answer = str(row['correct_answer']).strip()
+            is_correct = model_answer == correct_answer
+            correctness_list.append(is_correct)
+            if is_correct:
+                correct_answers += 1
+        else:
+            correctness_list.append(False)
         
         # Extract stated confidence from A, B, C, D columns (E is optional)
         if has_confidence_cols:
@@ -145,8 +160,8 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
         metrics['std_token_prob'] = np.nan
     
     # Expected Calibration Error (ECE)
-    if stated_confidences and has_answer_col and has_answer_col_cap:
-        ece = compute_ece(stated_confidences, df, correct_answers)
+    if stated_confidences and correctness_list:
+        ece = compute_ece(stated_confidences, correctness_list)
         metrics['ece'] = ece
     else:
         metrics['ece'] = np.nan
@@ -172,46 +187,25 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
         metrics['overconfidence'] = np.nan
     
     # Correlations
-    if stated_confidences and has_answer_col and has_answer_col_cap and len(stated_confidences) == len(df):
-        correctness = []
-        for _, row in df.iterrows():
-            try:
-                if str(row['answer']).strip() == str(row['Answer']).strip():
-                    correctness.append(1)
-                else:
-                    correctness.append(0)
-            except:
-                correctness.append(0)
-        
-        if len(correctness) == len(stated_confidences):
-            try:
-                corr = np.corrcoef(stated_confidences, correctness)[0, 1]
-                metrics['confidence_correctness_corr'] = corr if not np.isnan(corr) else np.nan
-            except:
-                metrics['confidence_correctness_corr'] = np.nan
-        else:
+    if stated_confidences and correctness_list and len(stated_confidences) == len(correctness_list):
+        # Convert correctness to numeric (True=1, False=0)
+        correctness_numeric = [1 if c else 0 for c in correctness_list]
+        try:
+            correlation = np.corrcoef(stated_confidences, correctness_numeric)[0, 1]
+            metrics['confidence_correctness_corr'] = correlation if not np.isnan(correlation) else np.nan
+        except:
             metrics['confidence_correctness_corr'] = np.nan
     else:
         metrics['confidence_correctness_corr'] = np.nan
     
-    if token_probs and has_answer_col and has_answer_col_cap and len(token_probs) == len(df):
-        correctness = []
-        for _, row in df.iterrows():
-            try:
-                if str(row['answer']).strip() == str(row['Answer']).strip():
-                    correctness.append(1)
-                else:
-                    correctness.append(0)
-            except:
-                correctness.append(0)
-        
-        if len(correctness) == len(token_probs):
-            try:
-                corr = np.corrcoef(token_probs, correctness)[0, 1]
-                metrics['token_prob_correctness_corr'] = corr if not np.isnan(corr) else np.nan
-            except:
-                metrics['token_prob_correctness_corr'] = np.nan
-        else:
+    # Token probability correlation with correctness
+    if token_probs and correctness_list and len(token_probs) == len(correctness_list):
+        # Convert correctness to numeric (True=1, False=0)
+        correctness_numeric = [1 if c else 0 for c in correctness_list]
+        try:
+            correlation = np.corrcoef(token_probs, correctness_numeric)[0, 1]
+            metrics['token_prob_correctness_corr'] = correlation if not np.isnan(correlation) else np.nan
+        except:
             metrics['token_prob_correctness_corr'] = np.nan
     else:
         metrics['token_prob_correctness_corr'] = np.nan
@@ -248,37 +242,40 @@ def compute_metrics(df: pd.DataFrame) -> Dict:
     
     return metrics
 
-def compute_ece(confidences: List[float], df: pd.DataFrame, correct_answers: int) -> float:
+def compute_ece(confidences: List[float], correctness_list: List[bool]) -> float:
     """Compute Expected Calibration Error using 11 bins."""
-    if not confidences:
+    if not confidences or not correctness_list or len(confidences) != len(correctness_list):
         return np.nan
+    
+    # Convert confidences to percentages (0-100)
+    confidences_pct = [c * 100 for c in confidences]
     
     # Create 11 bins: [0-10), [10-20), ..., [100]
     bins = np.linspace(0, 100, 12)
-    bin_indices = np.digitize(confidences, bins) - 1
+    bin_indices = np.digitize(confidences_pct, bins) - 1
     
     ece = 0
     for i in range(11):
         mask = (bin_indices == i)
         if np.any(mask):
-            bin_confidences = np.array(confidences)[mask]
-            bin_correctness = []
+            bin_confidences = np.array(confidences_pct)[mask]
+            bin_correctness = np.array(correctness_list)[mask]
             
-            for idx, row in df[mask].iterrows():
-                try:
-                    if str(row['answer']).strip() == str(row['Answer']).strip():
-                        bin_correctness.append(1)
-                    else:
-                        bin_correctness.append(0)
-                except:
-                    bin_correctness.append(0)
-            
-            if bin_correctness:
-                avg_confidence = np.mean(bin_confidences)
-                accuracy = np.mean(bin_correctness)
-                bin_size = len(bin_correctness)
+            if len(bin_confidences) > 0:
+                # Convert correctness to numeric (True=1, False=0)
+                bin_correctness_numeric = [1 if c else 0 for c in bin_correctness]
                 
-                ece += (bin_size / len(df)) * abs(avg_confidence - accuracy)
+                # Average confidence in this bin
+                avg_confidence = np.mean(bin_confidences)
+                
+                # Accuracy in this bin
+                accuracy = np.mean(bin_correctness_numeric)
+                
+                # Number of samples in this bin
+                n_samples = len(bin_confidences)
+                
+                # ECE contribution from this bin
+                ece += (n_samples / len(confidences)) * abs(avg_confidence - accuracy)
     
     return ece
 
@@ -315,11 +312,21 @@ def generate_plots(df: pd.DataFrame, model: str, dataset: str, output_dir: str):
     has_token_prob_col = 't1_prob' in df.columns
     
     for _, row in df.iterrows():
-        # Correctness
-        if has_answer_col and has_answer_col_cap:
+        # Correctness - use correct_answer column if available
+        if 'correct_answer' in df.columns and pd.notna(row['correct_answer']):
             try:
-                is_correct = 1 if str(row['answer']).strip() == str(row['Answer']).strip() else 0
-                correctness.append(is_correct)
+                model_answer = None
+                if has_answer_col:
+                    model_answer = str(row['answer']).strip()
+                elif has_answer_col_cap:
+                    model_answer = str(row['Answer']).strip()
+                
+                if model_answer:
+                    correct_answer = str(row['correct_answer']).strip()
+                    is_correct = 1 if model_answer == correct_answer else 0
+                    correctness.append(is_correct)
+                else:
+                    correctness.append(0)
             except:
                 correctness.append(0)
         else:
@@ -528,24 +535,20 @@ def plot_calibration(confidences: np.ndarray, correctness: np.ndarray, xlabel: s
         plt.legend()
 
 def find_csv_files() -> List[Tuple[str, str, str]]:
-    """Find all CSV files in the data directories."""
+    """Find all CSV files in the data/processed directory."""
     csv_files = []
     
-    # Search in data/parsed
-    parsed_dir = Path('data/parsed')
-    if parsed_dir.exists():
-        for csv_file in parsed_dir.rglob('*.csv'):
-            if csv_file.is_file():
-                model, dataset = extract_model_and_dataset(csv_file.name)
-                csv_files.append((str(csv_file), model, dataset))
-    
-    # Search in data/otherllms
-    otherllms_dir = Path('data/otherllms')
-    if otherllms_dir.exists():
-        for csv_file in otherllms_dir.rglob('*.csv'):
-            if csv_file.is_file() and not csv_file.name.startswith('.'):
-                model, dataset = extract_model_and_dataset(csv_file.name)
-                csv_files.append((str(csv_file), model, dataset))
+    # Search in data/processed
+    processed_dir = Path('data/processed')
+    if processed_dir.exists():
+        for model_dir in processed_dir.iterdir():
+            if model_dir.is_dir():
+                model_name = model_dir.name
+                for csv_file in model_dir.glob('*.csv'):
+                    if csv_file.is_file() and csv_file.name.endswith('_processed.csv'):
+                        # Extract dataset name from filename (remove _processed.csv suffix)
+                        dataset_name = csv_file.stem.replace('_processed', '')
+                        csv_files.append((str(csv_file), model_name, dataset_name))
     
     return csv_files
 
