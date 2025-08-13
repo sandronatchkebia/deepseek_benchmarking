@@ -35,7 +35,7 @@ DATASETS = [
 ]
 
 DATASETS = [
-    "sciq_test"
+    "halu_eval_qa"
 ]
 
 SAVE_DIR = "../data/full/deepseek_r1"
@@ -491,7 +491,7 @@ async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=12
                             {"role": "user", "content": user_prompt},
                         ],
                         temperature=0,
-                        max_tokens=4096,
+                        max_tokens=8192,
                         timeout=request_timeout,
                     )
             else:
@@ -502,7 +502,7 @@ async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=12
                         {"role": "user", "content": user_prompt},
                     ],
                     temperature=0,
-                    max_tokens=4096,
+                    max_tokens=8192,
                     timeout=request_timeout,
                 )
             return resp
@@ -517,8 +517,9 @@ async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=12
 
 async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=MODEL_NAME, concurrency=16, request_timeout=120):
     results = []
-    max_token_hits = 0
+    max_token_hits = 20
     abort_on_token_limit = True  # Set to False if you want to continue despite token limits
+    should_abort = False
 
     print(f"\n▶ Running: {dataset_name} on {model} ({len(prompts_df)} prompts) [concurrency={concurrency}]\n")
 
@@ -526,12 +527,12 @@ async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=M
     pbar = tqdm(total=len(prompts_df), desc=f"Processing {dataset_name}")
 
     async def process_row(i, row):
-        nonlocal max_token_hits
+        nonlocal max_token_hits, should_abort
         qid = row["Question ID"]
         user_prompt = row["Full Prompt"]
         
         # Check if we should abort due to token limits
-        if abort_on_token_limit and max_token_hits > 0:
+        if should_abort:
             return None  # Skip processing if we've hit token limits
             
         try:
@@ -545,6 +546,7 @@ async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=M
                 # If this is the first token limit hit and we want to abort, stop processing
                 if abort_on_token_limit and max_token_hits == 1:
                     print(f"\n🚨 Aborting processing due to token limit hit. Saving partial results...")
+                    should_abort = True
                     return "ABORT_TOKEN_LIMIT"
             
             results.append({
@@ -564,13 +566,14 @@ async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=M
         finally:
             pbar.update(1)
 
-    # Process rows one by one to check for early abort
+    # Create tasks for concurrent processing
+    tasks = []
     for i, row in prompts_df.iterrows():
-        result = await process_row(i, row)
-        
-        # Check if we should abort
-        if result == "ABORT_TOKEN_LIMIT":
-            break
+        task = process_row(i, row)
+        tasks.append(task)
+    
+    # Process all tasks concurrently
+    await asyncio.gather(*tasks)
     
     pbar.close()
 
