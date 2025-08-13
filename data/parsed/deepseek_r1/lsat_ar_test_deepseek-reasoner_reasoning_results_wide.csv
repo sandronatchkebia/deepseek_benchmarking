@@ -1,0 +1,1144 @@
+Question ID,content,answer,correct_format,coerce,Reasoning,Answer,A,B,C,D,E
+0,"### Reasoning:
+Option C satisfies all conditions: George reports on Tuesday (only day allowed); Robert reports in the morning (not afternoon); Olivia is absent, which is acceptable since only six report; Nina is absent, so no conditional trigger. Other options violate: A has Robert in afternoon; B has Olivia in afternoon; D has Nina on Monday but Helen not on Tuesday; E has George on Wednesday. Confidence is high as violations are clear.
+
+{
+  ""Reasoning"": ""Option C meets all constraints: George on Tuesday, Robert in morning, Olivia/Nina absent with no conditions triggered. Others fail clearly: A/B have afternoon violations for Robert/Olivia, D misses Helen on Tuesday after Nina, E has George on Wednesday."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,False,True,"Option C meets all constraints: George on Tuesday, Robert in morning, Olivia/Nina absent with no conditions triggered. Others fail clearly: A/B have afternoon violations for Robert/Olivia, D misses Helen on Tuesday after Nina, E has George on Wednesday.",C,0.0,0.0,1.0,0.0,0.0
+6,"{
+  ""Reasoning"": ""Option C satisfies all constraints: 4 French works (2 FN + 2 FP) ≤ 4, 4 novels (2 FN + 2 RN) within 3-4, FN=2 ≥ RN=2, and with both FP selected, RP is not selected. Option A violates FN < RN. Option B violates the condition that if both FP are selected, RP must not be selected. Option D has 5 French works > 4. Option E has 5 novels > 4."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C satisfies all constraints: 4 French works (2 FN + 2 FP) ≤ 4, 4 novels (2 FN + 2 RN) within 3-4, FN=2 ≥ RN=2, and with both FP selected, RP is not selected. Option A violates FN < RN. Option B violates the condition that if both FP are selected, RP must not be selected. Option D has 5 French works > 4. Option E has 5 novels > 4.",C,0.0,0.0,1.0,0.0,0.0
+11,"{
+  ""Reasoning"": ""Option A satisfies all conditions: T is immediately before F (positions 6-7); at least two compositions between R (4) and F (7) (O and T); O is fifth; eighth is H; P (2) before S (3); and one composition between S (3) and O (5) (R). Other options fail: B has no T-F/R adjacency; C has O seventh, not first/fifth; D has O and S adjacent; E has only one composition between F and R."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"Option A satisfies all conditions: T is immediately before F (positions 6-7); at least two compositions between R (4) and F (7) (O and T); O is fifth; eighth is H; P (2) before S (3); and one composition between S (3) and O (5) (R). Other options fail: B has no T-F/R adjacency; C has O seventh, not first/fifth; D has O and S adjacent; E has only one composition between F and R.",A,1.0,0.0,0.0,0.0,0.0
+1,"{
+  ""Reasoning"": ""With Kyle and Lenore out, the reporters are George, Helen, Irving, Nina, Olivia, and Robert. George must report on Tuesday (any session). Olivia and Robert must report in the morning. If Nina reports (not on Wednesday), the next day must include both Helen and Irving. Option D (Olivia Mon am, Robert Tue am, Irving Wed am) allows: Mon pm Helen, Tue pm George, Wed pm Nina. Nina on Wednesday avoids the Helen/Irving condition. Other options violate constraints: A and B leave Olivia/Robert in afternoon; C forces three reports on Tuesday; E has no Olivia morning slot."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"With Kyle and Lenore out, the reporters are George, Helen, Irving, Nina, Olivia, and Robert. George must report on Tuesday (any session). Olivia and Robert must report in the morning. If Nina reports (not on Wednesday), the next day must include both Helen and Irving. Option D (Olivia Mon am, Robert Tue am, Irving Wed am) allows: Mon pm Helen, Tue pm George, Wed pm Nina. Nina on Wednesday avoids the Helen/Irving condition. Other options violate constraints: A and B leave Olivia/Robert in afternoon; C forces three reports on Tuesday; E has no Olivia morning slot.",D,0.0,0.0,0.0,1.0,0.0
+3,"### Reasoning:
+George must report on Tuesday. If Nina reported on Monday, Helen and Irving would both need to report on Tuesday, but only one spot is available besides George, making it impossible. Thus, Nina must be on Wednesday, and Robert on Monday. Robert must report in the morning on Monday, leaving only the afternoon slot, which Olivia cannot take (she can only do morning reports). Therefore, options B, C, D, and E are impossible. Helen could report on Wednesday, as there are no restrictions preventing it.
+
+{
+  ""Reasoning"": ""George must be on Tuesday. Nina on Monday would require Helen and Irving on Tuesday, but only one spot exists, so Nina must be on Wednesday, forcing Robert to Monday. Olivia cannot take Monday's afternoon slot. Robert cannot be on Wednesday. Helen on Wednesday is possible."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,False,True,"George must be on Tuesday. Nina on Monday would require Helen and Irving on Tuesday, but only one spot exists, so Nina must be on Wednesday, forcing Robert to Monday. Olivia cannot take Monday's afternoon slot. Robert cannot be on Wednesday. Helen on Wednesday is possible.",A,1.0,0.0,0.0,0.0,0.0
+7,"{
+  ""Reasoning"": ""Option A could be true: selecting three French novels, one French play, and the Russian play (total five works) satisfies all constraints: French works ≤4 (4), novels=3 (within 3-4), French novels ≥ Russian novels (3≥0), and not both French plays selected. Options B, C, D, E are impossible: B has too few novels, C violates the play condition, D has too many novels, E exceeds French works limit."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"Option A could be true: selecting three French novels, one French play, and the Russian play (total five works) satisfies all constraints: French works ≤4 (4), novels=3 (within 3-4), French novels ≥ Russian novels (3≥0), and not both French plays selected. Options B, C, D, E are impossible: B has too few novels, C violates the play condition, D has too many novels, E exceeds French works limit.",A,1.0,0.0,0.0,0.0,0.0
+8,"{
+  ""Reasoning"": ""With three French novels selected, Russian novels must be 0 or 1 to keep total novels ≤4, and French plays must be ≤1 to avoid exceeding four French works. Option A has only one additional work (total=4<5, violates min works). Option B requires two French plays (French works=5>4, violates max French works). Option D includes two French plays (same violation as B). Option E requires two Russian novels (total novels=5>4, violates max novels). Option C (one Russian novel and one Russian play) gives total works=5, novels=4, French works=3, all constraints satisfied."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"With three French novels selected, Russian novels must be 0 or 1 to keep total novels ≤4, and French plays must be ≤1 to avoid exceeding four French works. Option A has only one additional work (total=4<5, violates min works). Option B requires two French plays (French works=5>4, violates max French works). Option D includes two French plays (same violation as B). Option E requires two Russian novels (total novels=5>4, violates max novels). Option C (one Russian novel and one Russian play) gives total works=5, novels=4, French works=3, all constraints satisfied.",C,0.0,0.0,1.0,0.0,0.0
+4,"The context specifies that Tuesday is the only day George can give a report, and Kyle is giving the afternoon report on Tuesday, so George must give the Tuesday morning report. This eliminates options A, C, and E, as they do not have George for Tuesday morning. Option B has Lenore for Monday morning, which forces Nina to give Monday afternoon (as Olivia and Robert cannot give afternoon reports and have no morning slot). However, Nina on Monday requires Helen and Irving on Tuesday, but Helen is on Wednesday and Irving is on Wednesday, making this impossible. Option D has Robert for Monday morning and Irving for Wednesday morning, with Lenore on Monday afternoon and Nina not reporting, satisfying all conditions without conflicts. Thus, only option D is possible.
+
+{
+  ""Reasoning"": ""Tuesday morning must be George, eliminating A, C, E. Option B forces Nina on Monday afternoon, requiring Helen and Irving on Tuesday, which conflicts with their Wednesday slots. Option D with Robert (Mon), George (Tue), Irving (Wed) works with Lenore on Mon afternoon and Nina not reporting, satisfying all conditions."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,False,True,"Tuesday morning must be George, eliminating A, C, E. Option B forces Nina on Monday afternoon, requiring Helen and Irving on Tuesday, which conflicts with their Wednesday slots. Option D with Robert (Mon), George (Tue), Irving (Wed) works with Lenore on Mon afternoon and Nina not reporting, satisfying all conditions.",D,0.0,0.0,0.0,1.0,0.0
+5,"{
+  ""Reasoning"": ""Helen, Kyle, and Lenore give all morning reports, so Olivia and Robert cannot be selected (require mornings). The reporters are George, Helen, Irving, Kyle, Lenore, Nina. George must be on Tuesday afternoon. Nina cannot be on Monday (would require both Helen and Irving on Tuesday, but only one spot with George fixed). Thus, Nina is on Wednesday afternoon, and Irving on Monday afternoon. Therefore, Irving must give a report on Monday."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,True,False,"Helen, Kyle, and Lenore give all morning reports, so Olivia and Robert cannot be selected (require mornings). The reporters are George, Helen, Irving, Kyle, Lenore, Nina. George must be on Tuesday afternoon. Nina cannot be on Monday (would require both Helen and Irving on Tuesday, but only one spot with George fixed). Thus, Nina is on Wednesday afternoon, and Irving on Monday afternoon. Therefore, Irving must give a report on Monday.",B,0.0,1.0,0.0,0.0,0.0
+15,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+13,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+9,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+12,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+10,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+2,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+24,"{
+  ""Reasoning"": ""Option A violates condition 2 (with two botanists, at most one zoologist allowed, but two zoologists are selected). Option B violates condition 1 (no zoologist) and condition 4 (K and M both selected). Option D violates condition 4 (K and M both selected). Option E violates condition 5 (M selected but R not selected). Option C satisfies all: two botanists with one zoologist (condition 2), K selected without F (condition 3) or M (condition 4), and no M so condition 5 not triggered. Confidence is high as violations are clear."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option A violates condition 2 (with two botanists, at most one zoologist allowed, but two zoologists are selected). Option B violates condition 1 (no zoologist) and condition 4 (K and M both selected). Option D violates condition 4 (K and M both selected). Option E violates condition 5 (M selected but R not selected). Option C satisfies all: two botanists with one zoologist (condition 2), K selected without F (condition 3) or M (condition 4), and no M so condition 5 not triggered. Confidence is high as violations are clear.",C,0.0,0.0,1.0,0.0,0.0
+26,"{
+  ""Reasoning"": ""With F, L, Q, R selected: Adding G or H (botanists) violates the condition that multiple botanists require at most one zoologist (Q and R are already selected). Adding K conflicts with F (cannot both be selected). Adding M requires P to be selected (per condition 5), but P is not included. Only P can be added, satisfying all conditions with one botanist and three zoologists."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"With F, L, Q, R selected: Adding G or H (botanists) violates the condition that multiple botanists require at most one zoologist (Q and R are already selected). Adding K conflicts with F (cannot both be selected). Adding M requires P to be selected (per condition 5), but P is not included. Only P can be added, satisfying all conditions with one botanist and three zoologists.",E,0.0,0.0,0.0,0.0,1.0
+18,"{
+  ""Reasoning"": ""Option A violates 'Himalayans not on day 1'. Option B violates 'breed on day 1 not on day 7' (Manx on both). Option C has only two Himalayan days, not three. Option D has consecutive Siamese on days 5-6, violating 'no breed on consecutive days'. Only option E satisfies all kitten constraints: Himalayans on three non-consecutive days (2,4,7), not on day 1; no consecutive breeds; day 1 (Siamese) not on day 7. It also allows a valid puppy assignment per constraints."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"Option A violates 'Himalayans not on day 1'. Option B violates 'breed on day 1 not on day 7' (Manx on both). Option C has only two Himalayan days, not three. Option D has consecutive Siamese on days 5-6, violating 'no breed on consecutive days'. Only option E satisfies all kitten constraints: Himalayans on three non-consecutive days (2,4,7), not on day 1; no consecutive breeds; day 1 (Siamese) not on day 7. It also allows a valid puppy assignment per constraints.",E,0.0,0.0,0.0,0.0,1.0
+16,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+17,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+25,"**Reasoning:** With M as the only chemist, P and R must be selected (from condition 5). This gives two zoologists and one chemist. To have five panelists and satisfy ""at least one of each type,"" exactly one botanist must be selected (since multiple botanists would require at most one zoologist, but two are already selected). The fifth spot must be filled by Q (the only remaining zoologist) to avoid violating conditions. Thus, P, Q, and R must all be selected. E must be true; other options are impossible or not necessary due to the single botanist constraint.
+
+**Answer:** E
+
+{
+  ""Reasoning"": ""M selected requires P and R. Two zoologists prevent multiple botanists, so exactly one botanist. Fifth spot must be Q, leading to P, Q, R all selected. E must be true; others invalid due to single botanist or impossibility."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,False,True,"M selected requires P and R. Two zoologists prevent multiple botanists, so exactly one botanist. Fifth spot must be Q, leading to P, Q, R all selected. E must be true; others invalid due to single botanist or impossibility.",E,0.0,0.0,0.0,0.0,1.0
+19,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+14,"The condition that O is performed immediately after T and O must be fifth (since O cannot be first if after T) forces T to be fourth and R to be third (from T immediately after R). Given R at position 3, F must be at least three positions away due to the condition requiring at least two compositions between F and R, so F must be at position 6 or 7 (positions ",,False,False,,,0.0,0.0,0.0,0.0,0.0
+29,"{
+  ""Reasoning"": ""Option A works with bays 1:fuel, 2:machinery, 3:textiles, 4:produce, 5:livestock, 6:grain, satisfying all constraints: grain>livestock (6>5), livestock>textiles (5>3), produce>fuel (4>1), and textiles adjacent to produce (bays 3-4). Options B-E violate constraints: B has grain first but must be after livestock; C has livestock in bay 2 but must be after textiles; D lacks adjacency between textiles and produce; E has produce in bay 3 but fuel must be before produce with no prior bay available."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"Option A works with bays 1:fuel, 2:machinery, 3:textiles, 4:produce, 5:livestock, 6:grain, satisfying all constraints: grain>livestock (6>5), livestock>textiles (5>3), produce>fuel (4>1), and textiles adjacent to produce (bays 3-4). Options B-E violate constraints: B has grain first but must be after livestock; C has livestock in bay 2 but must be after textiles; D lacks adjacency between textiles and produce; E has produce in bay 3 but fuel must be before produce with no prior bay available.",A,1.0,0.0,0.0,0.0,0.0
+20,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+22,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+21,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+28,"{
+  ""Reasoning"": ""With both G and H selected, there are at least two botanists, so at most one zoologist is allowed. If M were selected, both P and R must be selected, requiring two zoologists—impossible. Thus, M cannot be selected. If only G and H are botanists, chemists must be K and L (M excluded), so K is selected. If F, G, H are all botanists, F is selected and K cannot be (due to F and K conflict). Thus, either F or K is always included. Other options fail as M is never selected, and the zoologist may not be P or Q."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"With both G and H selected, there are at least two botanists, so at most one zoologist is allowed. If M were selected, both P and R must be selected, requiring two zoologists—impossible. Thus, M cannot be selected. If only G and H are botanists, chemists must be K and L (M excluded), so K is selected. If F, G, H are all botanists, F is selected and K cannot be (due to F and K conflict). Thus, either F or K is always included. Other options fail as M is never selected, and the zoologist may not be P or Q.",A,1.0,0.0,0.0,0.0,0.0
+23,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+27,"**Reasoning:** Given P is the only zoologist, M cannot be selected (as M requires both P and R, but R is not selected). Thus, only chemists K and L are available. If exactly two chemists are selected, both K and L must be chosen. Since K is selected, F cannot be selected due to the F-K conflict. Therefore, if exactly two chemists are selected, F cannot be selected. Options A, B, C, and E are not always true, as shown by counterexamples (e.g., with one chemist L, F can be selected; with two chemists, G can be selected). Confidence is high as the logic is direct from the constraints.
+
+**Answer:** D
+
+```json
+{
+  ""Reasoning"": ""With P as the only zoologist, M cannot be selected (requires R). Chemists are limited to K and L. If exactly two chemists are selected, K must be included, so F cannot be selected due to the F-K conflict. Options A, B, C, and E are falsifiable with specific panels, making D the only must-be-true statement."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}
+```",D,False,True,"With P as the only zoologist, M cannot be selected (requires R). Chemists are limited to K and L. If exactly two chemists are selected, K must be included, so F cannot be selected due to the F-K conflict. Options A, B, C, and E are falsifiable with specific panels, making D the only must-be-true statement.",D,0.0,0.0,0.0,1.0,0.0
+30,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+35,"{
+  ""Reasoning"": ""With produce in bay 4, textiles must be adjacent (bay 3 or 5). If textiles in 5, livestock > 5 requires bay 6, but grain > livestock (6) is impossible. Thus, textiles must be in bay 3. Livestock > textiles (3) must be in bay 5 (bay 4 is produce), and grain > livestock (5) in bay 6. Bays 3,4,5,6 are determined: textiles, produce, livestock, grain. Bays 1 and 2 hold fuel and machinery, undetermined due to no constraints. Thus, four bays are determined with high confidence."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"With produce in bay 4, textiles must be adjacent (bay 3 or 5). If textiles in 5, livestock > 5 requires bay 6, but grain > livestock (6) is impossible. Thus, textiles must be in bay 3. Livestock > textiles (3) must be in bay 5 (bay 4 is produce), and grain > livestock (5) in bay 6. Bays 3,4,5,6 are determined: textiles, produce, livestock, grain. Bays 1 and 2 hold fuel and machinery, undetermined due to no constraints. Thus, four bays are determined with high confidence.",C,0.0,0.0,1.0,0.0,0.0
+36,"### Reasoning
+Option A satisfies all constraints: Oatmeal's second batch (Wed) and peanut butter's first batch (Wed) are on the same day; sugar's second batch is on Thursday; at least one batch (oatmeal and sugar) is on Monday; and no two batches of the same cookie are on the same day. Option B has sugar's second batch on Wednesday, not Thursday. Option C has no batch on Monday. Options D and E have oatmeal's second batch and peanut butter's first batch on different days. Only A is valid, with high confidence as constraints are clear and violated in others.
+
+{
+  ""Reasoning"": ""A satisfies all: O2 and P1 both on Wed, S2 on Thu, at least one batch Mon, no same cookie conflicts. B has S2 on Wed (not Thu), C misses Mon batch, D has O2 Tue vs P1 Mon, E has O2 Thu vs P1 Tue."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,False,True,"A satisfies all: O2 and P1 both on Wed, S2 on Thu, at least one batch Mon, no same cookie conflicts. B has S2 on Wed (not Thu), C misses Mon batch, D has O2 Tue vs P1 Mon, E has O2 Thu vs P1 Tue.",A,1.0,0.0,0.0,0.0,0.0
+31,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+32,"{
+  ""Reasoning"": ""Livestock cannot be in bay 1 because it requires a lower-numbered bay for textiles, which is impossible. Bay 2 leads to a conflict with produce adjacency. Bay 3 has no valid adjacent textiles and produce without violating constraints. Bay 6 cannot have livestock because grain must have a higher number, but no bay exceeds 6. Bay 5 is possible with configurations like textiles in 3 or 4, produce adjacent, and grain in 6."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"Livestock cannot be in bay 1 because it requires a lower-numbered bay for textiles, which is impossible. Bay 2 leads to a conflict with produce adjacency. Bay 3 has no valid adjacent textiles and produce without violating constraints. Bay 6 cannot have livestock because grain must have a higher number, but no bay exceeds 6. Bay 5 is possible with configurations like textiles in 3 or 4, produce adjacent, and grain in 6.",D,0.0,0.0,0.0,1.0,0.0
+33,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+34,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+47,"### Reasoning:
+Option E satisfies all rules: Young (#3) > Togowa (#2), Xu (#5) > Souza (#1), Robertson (#4) > Young (#3), and Robertson is in #4 (within 1-4). Options A-D each violate at least one rule: A violates Young > Togowa, B violates Robertson in 1-4, C violates Xu > Souza, and D violates Robertson > Young. I am highly confident, as the violations are clear and E meets all conditions without ambiguity.
+
+{
+  ""Reasoning"": ""E satisfies all rules: Young > Togowa (3>2), Xu > Souza (5>1), Robertson > Young (4>3), and Robertson in 1-4. A violates Young>Togowa, B violates Robertson position, C violates Xu>Souza, D violates Robertson>Young."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,False,True,"E satisfies all rules: Young > Togowa (3>2), Xu > Souza (5>1), Robertson > Young (4>3), and Robertson in 1-4. A violates Young>Togowa, B violates Robertson position, C violates Xu>Souza, D violates Robertson>Young.",E,0.0,0.0,0.0,0.0,1.0
+37,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+38,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+39,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+40,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+42,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+41,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+43,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+44,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+45,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+46,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+52,"{
+  ""Reasoning"": ""With Robertson at #3, Robertson > Young forces Young < 3, so Young must be #1 or #2. But Young > Togowa requires Togowa to have a lower number; if Young were #1, Togowa would need a space < #1, which is impossible. Thus, Young must be #2, making option E true. Other options are not necessarily true, as Souza, Vaughn, and Xu can vary as long as Xu > Souza."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"With Robertson at #3, Robertson > Young forces Young < 3, so Young must be #1 or #2. But Young > Togowa requires Togowa to have a lower number; if Young were #1, Togowa would need a space < #1, which is impossible. Thus, Young must be #2, making option E true. Other options are not necessarily true, as Souza, Vaughn, and Xu can vary as long as Xu > Souza.",E,0.0,0.0,0.0,0.0,1.0
+53,"{
+  ""Reasoning"": ""Option A violates constraint 2 (Jaramillo assigned but Kayne not). Option C violates constraint 4 (Landon not assigned to Zambia). Option D violates constraint 1 (both Kayne and Novetzke assigned). Option E violates constraint 3 (Ong to Venezuela but Kayne to Yemen). Option B satisfies all constraints: Kayne assigned (constraint 1), Jaramillo implies Kayne (satisfied), Ong not to Venezuela (no issue), Landon to Zambia (satisfied). Confidence is high as all options are clearly invalid except B."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,True,False,"Option A violates constraint 2 (Jaramillo assigned but Kayne not). Option C violates constraint 4 (Landon not assigned to Zambia). Option D violates constraint 1 (both Kayne and Novetzke assigned). Option E violates constraint 3 (Ong to Venezuela but Kayne to Yemen). Option B satisfies all constraints: Kayne assigned (constraint 1), Jaramillo implies Kayne (satisfied), Ong not to Venezuela (no issue), Landon to Zambia (satisfied). Confidence is high as all options are clearly invalid except B.",B,0.0,1.0,0.0,0.0,0.0
+51,"The condition that Young is assigned a higher-numbered space than Souza (Y > S) combines with the rules to force Robertson to space #4 and Young to space #3. This implies Souza and Togowa must be in spaces #1 and #2, with Togowa possibly in #1. Options B, C, D, and E are impossible due to conflicts: Young cannot be in #2, Robertson must be in #4 (not #3), Souza must be in #1 or #2 (not #3), and Vaughn cannot be in #4 (occupied by Robertson).
+
+{
+  ""Reasoning"": ""With Y > S, R must be #4 and Y must be #3, forcing S and T to #1 and #2. Thus, T could be #1 (A possible). B, C, D, E are impossible due to space conflicts and rules."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,False,True,"With Y > S, R must be #4 and Y must be #3, forcing S and T to #1 and #2. Thus, T could be #1 (A possible). B, C, D, E are impossible due to space conflicts and rules.",A,1.0,0.0,0.0,0.0,0.0
+48,"**Reasoning:**  
+With Togowa > Souza, the rules force Souza in #1, Togowa in #2, Young in #3, and Robertson in #4 due to the chain Robertson > Young > Togowa > Souza and Robertson ≤ #4. Xu and Vaughn",,False,False,,,0.0,0.0,0.0,0.0,0.0
+49,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+55,"{
+  ""Reasoning"": ""With Ong assigned to Venezuela, constraint 3 prevents Kayne from being in Yemen. Constraint 1 requires exactly one of Kayne or Novetzke to be assigned. Option E (Landon and Novetzke) works: Landon to Zambia (satisfying constraint 4), Novetzke to Yemen, and Kayne not assigned (satisfying constraints 1-3). Other options violate: A misses K/N assignment, B lacks Kayne with Jaramillo (constraint 2), C places Kayne in Yemen (constraint 3), D assigns both Kayne and Novetzke (constraint 1). High confidence as E is the only valid pair."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"With Ong assigned to Venezuela, constraint 3 prevents Kayne from being in Yemen. Constraint 1 requires exactly one of Kayne or Novetzke to be assigned. Option E (Landon and Novetzke) works: Landon to Zambia (satisfying constraint 4), Novetzke to Yemen, and Kayne not assigned (satisfying constraints 1-3). Other options violate: A misses K/N assignment, B lacks Kayne with Jaramillo (constraint 2), C places Kayne in Yemen (constraint 3), D assigns both Kayne and Novetzke (constraint 1). High confidence as E is the only valid pair.",E,0.0,0.0,0.0,0.0,1.0
+50,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+59,"{
+  ""Reasoning"": ""Option C satisfies all constraints: Reynaldo does not test F (tests J and G), Yuki does not test J (tests F and H), Theresa tests H (on day 1), and Yuki's first-day bike (F) is tested by Seamus on day 2. Options A, B, D, and E each violate at least one constraint."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C satisfies all constraints: Reynaldo does not test F (tests J and G), Yuki does not test J (tests F and H), Theresa tests H (on day 1), and Yuki's first-day bike (F) is tested by Seamus on day 2. Options A, B, D, and E each violate at least one constraint.",C,0.0,0.0,1.0,0.0,0.0
+54,"{
+  ""Reasoning"": ""Constraint 1 requires exactly one of Kayne or Novetzke to be assigned. Options B, C, D, and E lead to contradictions: B and E assign both Kayne and Novetzke; C assigns Jaramillo without Kayne; D leaves both unassigned. Only A (Jaramillo and Novetzke unassigned) allows a valid assignment, e.g., Kayne to Venezuela, Ong to Yemen, Landon to Zambia."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"Constraint 1 requires exactly one of Kayne or Novetzke to be assigned. Options B, C, D, and E lead to contradictions: B and E assign both Kayne and Novetzke; C assigns Jaramillo without Kayne; D leaves both unassigned. Only A (Jaramillo and Novetzke unassigned) allows a valid assignment, e.g., Kayne to Venezuela, Ong to Yemen, Landon to Zambia.",A,1.0,0.0,0.0,0.0,0.0
+56,"{
+  ""Reasoning"": ""With Kayne assigned to Yemen, Novetzke is not assigned. Constraint 3 prevents Ong from being assigned to Venezuela, and constraint 4 prevents Landon from being assigned to Venezuela. Thus, Jaramillo must be assigned to Venezuela, as it is the only candidate left for that role. Options B, C, D, and E are not necessarily true, as Zambia could be assigned to Landon or Ong, and Ong may or may not be assigned."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"With Kayne assigned to Yemen, Novetzke is not assigned. Constraint 3 prevents Ong from being assigned to Venezuela, and constraint 4 prevents Landon from being assigned to Venezuela. Thus, Jaramillo must be assigned to Venezuela, as it is the only candidate left for that role. Options B, C, D, and E are not necessarily true, as Zambia could be assigned to Landon or Ong, and Ong may or may not be assigned.",A,1.0,0.0,0.0,0.0,0.0
+58,"### Reasoning:
+The original constraint ""If Jaramillo is assigned, then Kayne is assigned"" (J → K) must be substituted with an equivalent constraint. Given the existing constraint that either Kayne or Novetzke is assigned but not both (K XOR N), J → K is logically equivalent to ""Jaramillo and Novetzke are not both assigned"" (¬(J ∧ N)), which is option D. This equivalence holds because if J is assigned, K must be assigned (implying N is not), and if J and N cannot both be assigned, it forces K to be assigned when J is assigned. Other options do not enforce the same relationship between J and K and could allow assignments violating the original constraint. Confidence is high due to the logical equivalence under the given constraints.
+
+### Response:
+{
+  ""Reasoning"": ""With K XOR N fixed, J → K is equivalent to ¬(J ∧ N) (option D), as both ensure J cannot be assigned without K. Other options lack this equivalence and may permit invalid assignments."",
+  ""Answer"": ""D"",
+  ""A"": 0.01,
+  ""B"": 0.01,
+  ""C"": 0.01,
+  ""D"": 0.96,
+  ""E"": 0.01
+}",D,False,True,"With K XOR N fixed, J → K is equivalent to ¬(J ∧ N) (option D), as both ensure J cannot be assigned without K. Other options lack this equivalence and may permit invalid assignments.",D,0.01,0.01,0.01,0.96,0.01
+70,"{
+""Reasoning"": ""Option E satisfies all constraints: Kevin and Rebecca are on the same day (Friday), Lan and Olivia are on different days (Wednesday and Thursday), Nessa is in an afternoon session (Thursday), and Julio is before Olivia (Wednesday before Thursday). Options A-D each violate at least one constraint, such as Nessa in morning (A), Julio after Olivia (B), Kevin/Rebecca on different days (C), or Lan/Olivia on same day (D). Only E is possible, so high confidence."",
+""Answer"": ""E"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 0.0,
+""D"": 0.0,
+""E"": 1.0
+}",E,True,False,"Option E satisfies all constraints: Kevin and Rebecca are on the same day (Friday), Lan and Olivia are on different days (Wednesday and Thursday), Nessa is in an afternoon session (Thursday), and Julio is before Olivia (Wednesday before Thursday). Options A-D each violate at least one constraint, such as Nessa in morning (A), Julio after Olivia (B), Kevin/Rebecca on different days (C), or Lan/Olivia on same day (D). Only E is possible, so high confidence.",E,0.0,0.0,0.0,0.0,1.0
+60,"{
+  ""Reasoning"": ""Given Theresa tests G on day 2, she must test H on day 1 to satisfy the constraint that she tests H once. Yuki cannot test J, and from the constraint that Yuki's day 1 bike is tested by Seamus on day 2, Yuki must test F on day 1 (since testing G would conflict with Theresa on day 2). Thus, Seamus tests F on day 2. On day 2, with G and F taken, bikes H and J remain; Yuki cannot test J, so must test H. Therefore, Yuki testing H on day 2 must be true. Options A, C, and D are false; B is possible but not necessary."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"Given Theresa tests G on day 2, she must test H on day 1 to satisfy the constraint that she tests H once. Yuki cannot test J, and from the constraint that Yuki's day 1 bike is tested by Seamus on day 2, Yuki must test F on day 1 (since testing G would conflict with Theresa on day 2). Thus, Seamus tests F on day 2. On day 2, with G and F taken, bikes H and J remain; Yuki cannot test J, so must test H. Therefore, Yuki testing H on day 2 must be true. Options A, C, and D are false; B is possible but not necessary.",E,0.0,0.0,0.0,0.0,1.0
+57,"{
+  ""Reasoning"": ""If Novetzke is assigned to Zambia, then Kayne cannot be assigned (exactly one of Kayne or Novetzke must be assigned). Since Kayne is not assigned, Jaramillo cannot be assigned (if Jaramillo is assigned, Kayne must be). Landon cannot be assigned because if assigned, it must be to Zambia, which is taken. This leaves only Ong, but two countries remain unfilled with no valid candidates, making it impossible. Thus, option C cannot be true."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"If Novetzke is assigned to Zambia, then Kayne cannot be assigned (exactly one of Kayne or Novetzke must be assigned). Since Kayne is not assigned, Jaramillo cannot be assigned (if Jaramillo is assigned, Kayne must be). Landon cannot be assigned because if assigned, it must be to Zambia, which is taken. This leaves only Ong, but two countries remain unfilled with no valid candidates, making it impossible. Thus, option C cannot be true.",C,0.0,0.0,1.0,0.0,0.0
+61,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+62,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+63,"### Reasoning
+Given Theresa tests J on day 1, she must test H on day 2 to satisfy her constraint. Yuki cannot test H on day 1 because it would require Seamus to test H on",,False,False,,,0.0,0.0,0.0,0.0,0.0
+64,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+75,"{
+  ""Reasoning"": ""Option E satisfies all constraints: pharmacy at space 7 (end), restaurant at space 1 (other end), restaurants at positions 1 and 4 with two businesses between (spaces 2 and 3), pharmacy next to veterinarian (space 6), and toy store (space 3) not next to veterinarian (space 6). Options A-D violate constraints: A has toy store next to veterinarian, B has restaurants separated by only one business, C has pharmacy not at end, D has pharmacy not next to optometrist or veterinarian."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"Option E satisfies all constraints: pharmacy at space 7 (end), restaurant at space 1 (other end), restaurants at positions 1 and 4 with two businesses between (spaces 2 and 3), pharmacy next to veterinarian (space 6), and toy store (space 3) not next to veterinarian (space 6). Options A-D violate constraints: A has toy store next to veterinarian, B has restaurants separated by only one business, C has pharmacy not at end, D has pharmacy not next to optometrist or veterinarian.",E,0.0,0.0,0.0,0.0,1.0
+65,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+66,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+67,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+74,"{
+  ""Reasoning"": ""With Julio fixed on Thursday afternoon, Kevin and Rebecca must be on Wednesday together due to constraints and Olivia's placement on Friday. Lan must be on Thursday morning. Olivia must be on Friday (later than Julio), and Nessa must be on Friday afternoon, forcing Olivia to Friday morning. Thus, Lan (Thu AM), Nessa (Fri PM), and Olivia (Fri AM) are fully determined. Kevin and Rebecca are only known to be on Wednesday, not specific sessions, so they cannot be determined. Therefore, three others can be determined."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.05,
+  ""C"": 0.95,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"With Julio fixed on Thursday afternoon, Kevin and Rebecca must be on Wednesday together due to constraints and Olivia's placement on Friday. Lan must be on Thursday morning. Olivia must be on Friday (later than Julio), and Nessa must be on Friday afternoon, forcing Olivia to Friday morning. Thus, Lan (Thu AM), Nessa (Fri PM), and Olivia (Fri AM) are fully determined. Kevin and Rebecca are only known to be on Wednesday, not specific sessions, so they cannot be determined. Therefore, three others can be determined.",C,0.0,0.05,0.95,0.0,0.0
+72,"### Reasoning:
+Given that Kevin's session is the day before Nessa's and Nessa must be in an afternoon session, Nessa must be on Friday afternoon (FA), forcing Kevin to Thursday. Since Kevin and Rebecca must share a day, Rebecca is also on Thursday. Thus, Thursday afternoon (ThA) must be Kevin or Rebecca. No other assistants can be on Thursday due to constraints. Option B lists Kevin and Rebecca, covering all possibilities. Other options include impossible assistants (e.g., Julio, Lan, or Nessa for ThA). Confidence is high as constraints lead to only one valid scenario.
+
+{
+  ""Reasoning"": ""With Kevin before Nessa, Nessa must be on Friday afternoon, forcing Kevin to Thursday. Kevin and Rebecca share Thursday, so ThA must be Kevin or Rebecca. Only B lists both, and constraints rule out others."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,False,True,"With Kevin before Nessa, Nessa must be on Friday afternoon, forcing Kevin to Thursday. Kevin and Rebecca share Thursday, so ThA must be Kevin or Rebecca. Only B lists both, and constraints rule out others.",B,0.0,1.0,0.0,0.0,0.0
+69,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+68,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+71,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+81,"### Reasoning:
+Option B satisfies all conditions: Tiao is in Zone 1 (with Kim), so Parra is not, satisfying condition 1. Udall is in Zone 2 (with Stuckey), so Tiao is not, satisfying condition 2. Parra and Quinn are both in Zone 3, satisfying condition 3. Stuckey and Udall are together in Zone 2, satisfying condition 4. Zone 3 has 3 reps (Mahr, Parra, Quinn) > Zone 2's 2 reps (Stuckey, Udall), satisfying condition 5. Other options violate at least one condition (e.g., A violates condition 3; C violates condition 4; D violates condition 1; E violates conditions 2 and 5). Confidence is high as only B works.
+
+{
+  ""Reasoning"": ""Option B satisfies all conditions: Tiao in Zone 1 with Kim; Udall in Zone 2 with Stuckey; Parra and Quinn in Zone 3 with Mahr; Zone 3 > Zone 2 in reps. Others fail due to specific violations."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,False,True,Option B satisfies all conditions: Tiao in Zone 1 with Kim; Udall in Zone 2 with Stuckey; Parra and Quinn in Zone 3 with Mahr; Zone 3 > Zone 2 in reps. Others fail due to specific violations.,B,0.0,1.0,0.0,0.0,0.0
+73,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+76,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+77,"**Reasoning:** With veterinarian in space 5, pharmacy must be at an end (1 or 7) but cannot be adjacent to vet, so it must be next to optometrist. If pharmacy in 1, optometrist in 2, and restaurants in 4 and 7. If pharmacy in 7, optometrist in 6, and restaurants in 1 and 4. In both cases, space 4 has a restaurant. Other options are not always true: optometrist not always in 2 (only if pharmacy in 1), pharmacy not always in 7, shoe store not always in 6, toy store not always in 3. Thus, C must be true with high confidence.
+
+{
+  ""Reasoning"": ""With veterinarian in space 5, pharmacy must be at an end but cannot be adjacent to vet, so it must be next to optometrist. If pharmacy in 1, restaurants are in 4 and 7. If pharmacy in",,False,False,,,0.0,0.0,0.0,0.0,0.0
+78,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+92,"{
+  ""Reasoning"": ""Only option C satisfies all rules: J is in evening (7th), K is not in morning (3rd, afternoon), and L is after K (4th) and before M (6th). Options A, B, D, and E violate at least one rule: A has K in morning, B has L before K, D has M before L, E has J not in evening."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Only option C satisfies all rules: J is in evening (7th), K is not in morning (3rd, afternoon), and L is after K (4th) and before M (6th). Options A, B, D, and E violate at least one rule: A has K in morning, B has L before K, D has M before L, E has J not in evening.",C,0.0,0.0,1.0,0.0,0.0
+79,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+80,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+82,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+83,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+97,"{
+  ""Reasoning"": ""Only option D satisfies all conditions: Iturbe testifies on Wednesday; exactly two on Tuesday (Franco and Hong); Hong not on Monday; Franco and Garcia on different days (Monday and Tuesday); and at least one on Monday. Other options violate conditions: A, B, C have Iturbe not on Wednesday; E has only one on Tuesday."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"Only option D satisfies all conditions: Iturbe testifies on Wednesday; exactly two on Tuesday (Franco and Hong); Hong not on Monday; Franco and Garcia on different days (Monday and Tuesday); and at least one on Monday. Other options violate conditions: A, B, C have Iturbe not on Wednesday; E has only one on Tuesday.",D,0.0,0.0,0.0,1.0,0.0
+84,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+85,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+86,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+87,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+89,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+88,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+90,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+94,"**Reasoning:** J must be in evening (positions 6 or 7). K cannot be in morning and cannot be in evening (as it would leave no room for L and M after K due to sequencing and J's constraint), so K must be in afternoon (3,4,5). L must be after K and before M, and cannot be in morning (no position before) or evening (would conflict with J and M sequencing), so L must be in afternoon. Thus, option B must be true. Confidence is high due to logical deduction from rules.
+
+{
+""Reasoning"": ""J must be in evening. K cannot be in morning or evening, so K in afternoon. L must be after K and before M, and cannot be in morning or evening, so L must be in afternoon. Thus, B must be true. High confidence from rule constraints."",
+""Answer"": ""B"",
+""A"": 0.0,
+""B"": 1.0,
+""C"": 0.0,
+""D"": 0.0,
+""E"": 0.0
+}",B,False,True,"J must be in evening. K cannot be in morning or evening, so K in afternoon. L must be after K and before M, and cannot be in morning or evening, so L must be in afternoon. Thus, B must be true. High confidence from rule constraints.",B,0.0,1.0,0.0,0.0,0.0
+91,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+99,"### Reasoning:
+With Jackson on Wednesday, Wednesday has Iturbe and Jackson (at least two). Tuesday has exactly two witnesses. Total witnesses are five, so Monday must have exactly one (since Monday must have at least one, and the only distribution that satisfies all constraints is Monday:1, Tuesday:2, Wednesday:2). Hong cannot be on Monday, so the Monday witness must be Franco or Garcia, but this doesn't affect the count. Option C states exactly one on Monday, which must be true. Other options depend on specific assignments and are not necessary.
+
+{
+  ""Reasoning"": ""Jackson on Wednesday forces Wednesday to have at least two (Iturbe and Jackson). With exactly two on Tuesday and five witnesses total, Monday must have exactly one to satisfy all constraints, including at least one on Monday. Hong not on Monday doesn't change the count."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,False,True,"Jackson on Wednesday forces Wednesday to have at least two (Iturbe and Jackson). With exactly two on Tuesday and five witnesses total, Monday must have exactly one to satisfy all constraints, including at least one on Monday. Hong not on Monday doesn't change the count.",C,0.0,0.0,1.0,0.0,0.0
+93,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+98,"**Reasoning:** Option E requires Jackson on Tuesday and two witnesses on Monday, which forces Monday to have Franco and Garcia (since Iturbe is on Wednesday alone and Hong must be on Tuesday). This violates the condition that Franco and Garcia cannot testify on the same day. Options A, B, C, and D can all be true under the constraints with feasible schedules.
+
+**Answer:** E
+
+{
+  ""Reasoning"": ""Option E forces Franco and Garcia to testify on Monday when Jackson is on Tuesday and two on Monday, violating the no-same-day condition. Other options are possible."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,False,True,"Option E forces Franco and Garcia to testify on Monday when Jackson is on Tuesday and two on Monday, violating the no-same-day condition. Other options are possible.",E,0.0,0.0,0.0,0.0,1.0
+108,"{
+  ""Reasoning"": ""Option C satisfies all constraints: no consecutive same topics (e.g., Q-nutrition to J-finance), S before Y (3rd to 5th), J before G before R (2nd to 6th to 7th), and S not before Q (Q 1st, S 3rd) avoids the 'S before Q only if Q third' condition. Options A, B, D, and E violate constraints: A has S before Q without Q third, B has consecutive finance, D has Y before S, E has G before J."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C satisfies all constraints: no consecutive same topics (e.g., Q-nutrition to J-finance), S before Y (3rd to 5th), J before G before R (2nd to 6th to 7th), and S not before Q (Q 1st, S 3rd) avoids the 'S before Q only if Q third' condition. Options A, B, D, and E violate constraints: A has S before Q without Q third, B has consecutive finance, D has Y before S, E has G before J.",C,0.0,0.0,1.0,0.0,0.0
+100,"**Reasoning:** With Jackson alone on Monday and Iturbe fixed on Wednesday, the remaining witnesses (Franco, Garcia, Hong) must be assigned to Tuesday (exactly two) and Wednesday (one with Iturbe). Hong cannot be on Wednesday, as it would force Franco and Garcia to share Tuesday, violating the condition that they cannot testify together. Thus, Hong must be on Tuesday. Option B must be true, while others are not necessarily true (e.g., Franco or Garcia could be on Tuesday or Wednesday).
+
+**Answer:** B
+
+{
+  ""Reasoning"": ""Jackson alone on Monday and Iturbe on Wednesday force Hong to Tuesday to avoid Franco and Garcia together on Tuesday, which is forbidden. Thus, Hong must testify on Tuesday."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,False,True,"Jackson alone on Monday and Iturbe on Wednesday force Hong to Tuesday to avoid Franco and Garcia together on Tuesday, which is forbidden. Thus, Hong must testify on Tuesday.",B,0.0,1.0,0.0,0.0,0.0
+95,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+101,"{
+""Reasoning"": ""Franco and Hong must testify together, but Hong cannot testify on Monday. If they testify on Wednesday with Iturbe, only Garcia and Jackson remain, forcing both to Tuesday for exactly two witnesses, leaving Monday empty—violating 'at least one on Monday.' Thus, Franco and Hong must testify on Tuesday, so Hong on Tuesday must be true. Confidence is high due to the contradiction."",
+""Answer"": ""D"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 0.0,
+""D"": 1.0,
+""E"": 0.0
+}",D,True,False,"Franco and Hong must testify together, but Hong cannot testify on Monday. If they testify on Wednesday with Iturbe, only Garcia and Jackson remain, forcing both to Tuesday for exactly two witnesses, leaving Monday empty—violating 'at least one on Monday.' Thus, Franco and Hong must testify on Tuesday, so Hong on Tuesday must be true. Confidence is high due to the contradiction.",D,0.0,0.0,0.0,1.0,0.0
+96,"{
+  ""Reasoning"": ""With P in the afternoon, the morning positions (1 and 2) must be filled by N and O because J must be in the evening, K cannot be in the morning, and L and M must follow K, making them unable to be in the morning. Thus, O must be in the morning. Options A, B, C, and D are not necessarily true, as J could be sixth or seventh, K could be any afternoon position, N could be first or second, and M could be in the evening."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"With P in the afternoon, the morning positions (1 and 2) must be filled by N and O because J must be in the evening, K cannot be in the morning, and L and M must follow K, making them unable to be in the morning. Thus, O must be in the morning. Options A, B, C, and D are not necessarily true, as J could be sixth or seventh, K could be any afternoon position, N could be first or second, and M could be in the evening.",E,0.0,0.0,0.0,0.0,1.0
+102,"### Reasoning:
+Given no voicemail target is 3 days, voicemail targets must be 1 or 2 days. Image's voicemail must be shorter than others', so Image VM = 1 day, and Solide/Truvest VM = 2 days. Website targets must be ≤ voicemail: Image WB must be 1 day. Solide WB < Truvest WB, and with WB ≤ 2 for both, Solide WB must be 1, Truvest WB must be 2. Thus, A, C, D, E must be true, but B (Solide WB=2) is impossible, so it must not be true and is the EXCEPT case. Confidence is high as all constraints fix the values.
+
+### JSON Response:
+{
+  ""Reasoning"": ""No VM=3 forces Image VM=1, others VM=2. Image WB must be 1. Solide WB < Truvest WB and constraints force Solide WB=1, Truvest WB=2. Thus, A, C, D, E are always true; B is always false and the exception. High confidence due to fixed values."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,False,True,"No VM=3 forces Image VM=1, others VM=2. Image WB must be 1. Solide WB < Truvest WB and constraints force Solide WB=1, Truvest WB=2. Thus, A, C, D, E are always true; B is always false and the exception. High confidence due to fixed values.",B,0.0,1.0,0.0,0.0,0.0
+104,"{
+  ""Reasoning"": ""With Image's website at 2 days, condition 1 (website ≤ voicemail) requires Image's voicemail ≥ 2. Condition 2 (Image's voicemail shorter than others) prevents voicemail=3 (no target >3) and voicemail=1 (as website=2 >1 violates condition 1), so Image's voicemail must be 2. Other options are not fixed: Solide and Truvest voicemail must be 3, but their websites vary (e.g., Solide website could be 1 or 2). High confidence due to deductive constraints."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"With Image's website at 2 days, condition 1 (website ≤ voicemail) requires Image's voicemail ≥ 2. Condition 2 (Image's voicemail shorter than others) prevents voicemail=3 (no target >3) and voicemail=1 (as website=2 >1 violates condition 1), so Image's voicemail must be 2. Other options are not fixed: Solide and Truvest voicemail must be 3, but their websites vary (e.g., Solide website could be 1 or 2). High confidence due to deductive constraints.",A,1.0,0.0,0.0,0.0,0.0
+105,"**Reasoning:** Image's voicemail must be 1 day (shortest), so its website must also be 1 day. Solide's voicemail must be 2 days (since it must be less than Truvest's website, which must be 3 days, and Solide's voicemail cannot be 3). Truvest's voicemail must be 3 days (to accommodate its 3-day website target). Solide's website must be less than Truvest's website (3 days) and at most Solide's voicemail (2 days), so it can be 1 or 2 days. Thus, only Solide's website could be 2 days. Other options are fixed or impossible to be 2.
+
+**Answer:** C
+
+{
+""Reasoning"": ""Image's voicemail must be 1 day (shortest), forcing its website to 1. Solide's voicemail must be 2 days (less than Truvest's 3-day website), and Truvest's voicemail must be 3 days. Solide's website can be 1 or 2 days, so it could be 2. All other targets cannot be 2 due to constraints."",
+""Answer"": ""C"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 1.0,
+""D"": 0.0,
+""E"": 0.0
+}",C,False,True,"Image's voicemail must be 1 day (shortest), forcing its website to 1. Solide's voicemail must be 2 days (less than Truvest's 3-day website), and Truvest's voicemail must be 3 days. Solide's website can be 1 or 2 days, so it could be 2. All other targets cannot be 2 due to constraints.",C,0.0,0.0,1.0,0.0,0.0
+103,"{
+  ""Reasoning"": ""Given Truvest's website target < voicemail target, Truvest's voicemail must be 3 days (if 2, it forces impossible targets). Thus, Truvest's website must be 2 days. Solide's website < Truvest's website, so Solide's website < 2, must be 1 day. Image's targets can vary (voicemail 1 or 2; website 1 if voicemail=1, or 1-2 if voicemail=2), so no other option must be true. High confidence as deductions are strict."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"Given Truvest's website target < voicemail target, Truvest's voicemail must be 3 days (if 2, it forces impossible targets). Thus, Truvest's website must be 2 days. Solide's website < Truvest's website, so Solide's website < 2, must be 1 day. Image's targets can vary (voicemail 1 or 2; website 1 if voicemail=1, or 1-2 if voicemail=2), so no other option must be true. High confidence as deductions are strict.",E,0.0,0.0,0.0,0.0,1.0
+106,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+107,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+122,"{
+""Reasoning"": ""Option B (Ortega, Paine, Thomson, Zayre) satisfies all constraints: Myers is absent, avoiding condition 1; Schmidt is absent, avoiding condition 2; Wong is absent, avoiding condition 3. Option A violates condition 1 (Myers and Paine both present). Option C violates condition 2 (Schmidt present but Thomson absent). Option D violates condition 2 (Schmidt present but Paine absent). Option E violates condition 3 (Wong present but Myers absent). Confidence is high due to clear logical violations in other options."",
+""Answer"": ""B"",
+""A"": 0.0,
+""B"": 1.0,
+""C"": 0.0,
+""D"": 0.0,
+""E"": 0.0
+}",B,True,False,"Option B (Ortega, Paine, Thomson, Zayre) satisfies all constraints: Myers is absent, avoiding condition 1; Schmidt is absent, avoiding condition 2; Wong is absent, avoiding condition 3. Option A violates condition 1 (Myers and Paine both present). Option C violates condition 2 (Schmidt present but Thomson absent). Option D violates condition 2 (Schmidt present but Paine absent). Option E violates condition 3 (Wong present but Myers absent). Confidence is high due to clear logical violations in other options.",B,0.0,1.0,0.0,0.0,0.0
+109,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+119,"The question asks for bands that could perform in slot one, given the constraints. Vegemite must be before Zircon, so Zircon cannot be first. Wellspring and Zircon must be before Xpert, so Xpert cannot be first. Uneasy must be in the last three slots (4,5,6), so it cannot be first. Yardsign must be in the first three slots (1,2,3), so it can be first. Vegemite and Wellspring have no constraints forcing them later, so they can also be first. Thus, only Vegemite, Wellspring, and Yardsign are possible for slot one. Option D lists all three, while others are incomplete or include impossible bands like Zircon.
+
+{
+  ""Reasoning"": ""Vegemite, Wellspring, and Yardsign can all be in slot one based on constraints; Zircon, Xpert, and Uneasy cannot. Option D includes all possible bands, making it complete and accurate."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,False,True,"Vegemite, Wellspring, and Yardsign can all be in slot one based on constraints; Zircon, Xpert, and Uneasy cannot. Option D includes all possible bands, making it complete and accurate.",D,0.0,0.0,0.0,1.0,0.0
+110,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+111,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+112,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+123,"{
+""Reasoning"": ""If Schmidt and Wong are both on the team, Schmidt requires Paine and Thomson, while Wong requires Myers and Yoder. Myers being on excludes Paine, creating a contradiction (Paine must be on and cannot be on). This pair is impossible. Other pairs have no such conflicts and could be possible under the constraints."",
+""Answer"": ""D"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 0.0,
+""D"": 1.0,
+""E"": 0.0
+}",D,True,False,"If Schmidt and Wong are both on the team, Schmidt requires Paine and Thomson, while Wong requires Myers and Yoder. Myers being on excludes Paine, creating a contradiction (Paine must be on and cannot be on). This pair is impossible. Other pairs have no such conflicts and could be possible under the constraints.",D,0.0,0.0,0.0,1.0,0.0
+116,"{
+  ""Reasoning"": ""Given Zircon < Yardsign and constraints, Zircon must be in slot 2 and Yardsign in slot 3, forcing Vegemite to slot 1. Thus, slots 1-3 are occupied, leaving slots 4-6 for Wellspring, Uneasy, and Xpert. Wellspring must be before Xpert, so the earliest Wellspring can perform is slot 4, achievable with Xpert in slot 5 or 6. Slots 2 and 3 are impossible for Wellspring, and slots 5/6 are later. Confident due to fixed slots 1-3."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Given Zircon < Yardsign and constraints, Zircon must be in slot 2 and Yardsign in slot 3, forcing Vegemite to slot 1. Thus, slots 1-3 are occupied, leaving slots 4-6 for Wellspring, Uneasy, and Xpert. Wellspring must be before Xpert, so the earliest Wellspring can perform is slot 4, achievable with Xpert in slot 5 or 6. Slots 2 and 3 are impossible for Wellspring, and slots 5/6 are later. Confident due to fixed slots 1-3.",C,0.0,0.0,1.0,0.0,0.0
+115,"**Reasoning:** Vegemite must be before Zircon (V < Z). If Vegemite is in slot 5, Zircon must be in slot 6. However, Zircon must be before Xpert (Z < X), so Xpert would need a slot after 6, which is impossible. Therefore, Vegemite cannot be in slot 5. The other bands can be in slot 5 without violating constraints, as shown in possible schedules.
+
+{
+  ""Reasoning"": ""Vegemite in slot 5 forces Zircon to slot 6, but Zircon must be before Xpert, leaving no slot for Xpert. Other bands can be placed in slot 5 without conflict."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,False,True,"Vegemite in slot 5 forces Zircon to slot 6, but Zircon must be before Xpert, leaving no slot for Xpert. Other bands can be placed in slot 5 without conflict.",B,0.0,1.0,0.0,0.0,0.0
+118,"{
+  ""Reasoning"": ""Given that Zircon performs immediately before Wellspring, the possible pairs are (1,2), (2,3), (3,4), (4,5), (5,6). Constraints: Vegemite before Zircon, Wellspring and Zircon before Xpert, Uneasy in last three slots (4,5,6), Yardsign in first three slots (1,2,3). Pairs (1,2) and (2,3) fail due to no room for Vegemite or Yardsign. Pairs (4,5) and (5,6) fail due to conflicts with Uneasy or Xpert. Only (3,4) works: Z in 3, W in 4. Thus, Zircon must be in slot 3. High confidence as all other pairs are impossible."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"Given that Zircon performs immediately before Wellspring, the possible pairs are (1,2), (2,3), (3,4), (4,5), (5,6). Constraints: Vegemite before Zircon, Wellspring and Zircon before Xpert, Uneasy in last three slots (4,5,6), Yardsign in first three slots (1,2,3). Pairs (1,2) and (2,3) fail due to no room for Vegemite or Yardsign. Pairs (4,5) and (5,6) fail due to conflicts with Uneasy or Xpert. Only (3,4) works: Z in 3, W in 4. Thus, Zircon must be in slot 3. High confidence as all other pairs are impossible.",E,0.0,0.0,0.0,0.0,1.0
+114,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+113,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+117,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+127,"{
+  ""Reasoning"": ""Option A satisfies all conditions: western before horror (7<9), sci-fi not on screen 3 (on screen 2), romance not on screen 2 (on screen 1), horror and mystery on different screens (screen 1 and screen 3). Other options violate at least one condition, making A the only acceptable schedule."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"Option A satisfies all conditions: western before horror (7<9), sci-fi not on screen 3 (on screen 2), romance not on screen 2 (on screen 1), horror and mystery on different screens (screen 1 and screen 3). Other options violate at least one condition, making A the only acceptable schedule.",A,1.0,0.0,0.0,0.0,0.0
+120,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+121,"{
+  ""Reasoning"": ""The original constraint requires Wellspring and Zircon to perform before Xpert. Option A states that only Uneasy can be after Xpert, implying all other bands, including Wellspring and Zircon, must be before Xpert. Given the existing constraints (Vegemite before Zircon, Uneasy in last three slots, Yardsign in first three), this substitution has the same effect, as it forces both Wellspring and Zircon to precede Xpert. Other options fail to enforce both conditions: B orders Vegemite, Wellspring, Zircon but ignores X; C misses Zircon; D and E allow Wellspring or Zircon after Xpert."",
+  ""Answer"": ""A"",
+  ""A"": 0.95,
+  ""B"": 0.02,
+  ""C"": 0.02,
+  """,A,False,False,,A,0.0,0.0,0.0,0.0,0.0
+124,"{
+  ""Reasoning"": ""When Yoder is not on the team, Wong cannot be on (due to the constraint that Wong requires Yoder). If Myers is on, Ortega and Paine cannot be on. Schmidt cannot be on because it requires Paine, who is excluded if Myers is on. This leaves only Thomson and Zayre possible with Myers, resulting in at most three members, which is less than the required four. Thus, Myers cannot be on the team. All other options can be on in valid teams (e.g., Ortega, Paine, Schmidt, Thomson, Zayre)."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"When Yoder is not on the team, Wong cannot be on (due to the constraint that Wong requires Yoder). If Myers is on, Ortega and Paine cannot be on. Schmidt cannot be on because it requires Paine, who is excluded if Myers is on. This leaves only Thomson and Zayre possible with Myers, resulting in at most three members, which is less than the required four. Thus, Myers cannot be on the team. All other options can be on in valid teams (e.g., Ortega, Paine, Schmidt, Thomson, Zayre).",E,0.0,0.0,0.0,0.0,1.0
+125,"{
+""Reasoning"": ""Paine not on implies Schmidt cannot be on. For options A, B, C, and E, excluding the specified pairs leaves fewer than four available members (considering constraints like Wong requiring Myers), making a team impossible. For D, neither Ortega nor Thomson on allows a valid team of Myers, Wong, Yoder, and Zayre, satisfying all constraints (e.g., Myers on excludes Ortega and Paine; Wong on requires Myers and Yoder). Thus, D could be true. Confidence is high as the scenario is clear and other options are impossible."",
+""Answer"": ""D"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 0.0,
+""D"": 1.0,
+""E"": 0.0
+}",D,True,False,"Paine not on implies Schmidt cannot be on. For options A, B, C, and E, excluding the specified pairs leaves fewer than four available members (considering constraints like Wong requiring Myers), making a team impossible. For D, neither Ortega nor Thomson on allows a valid team of Myers, Wong, Yoder, and Zayre, satisfying all constraints (e.g., Myers on excludes Ortega and Paine; Wong on requires Myers and Yoder). Thus, D could be true. Confidence is high as the scenario is clear and other options are impossible.",D,0.0,0.0,0.0,1.0,0.0
+132,"{
+  ""Reasoning"": ""Given that sci-fi and romance share a screen, it must be Screen 1 (since sci-fi isn't on Screen 3 and romance isn't on Screen 2). This leaves horror, mystery, and western for Screens 2 and 3. Horror and mystery must be on different screens, so one is on Screen 3 at 8 PM. Western must begin before horror. In both cases (horror on Screen 3 or mystery on Screen 3), western must be at 7 PM on Screen 2 to satisfy the 'before' condition. Thus, option A must be true."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"Given that sci-fi and romance share a screen, it must be Screen 1 (since sci-fi isn't on Screen 3 and romance isn't on Screen 2). This leaves horror, mystery, and western for Screens 2 and 3. Horror and mystery must be on different screens, so one is on Screen 3 at 8 PM. Western must begin before horror. In both cases (horror on Screen 3 or mystery on Screen 3), western must be at 7 PM on Screen 2 to satisfy the 'before' condition. Thus, option A must be true.",A,1.0,0.0,0.0,0.0,0.0
+138,"{
+  ""Reasoning"": ""Option C satisfies all restrictions: guitarist is sixth (not fourth); percussionist (4th) is before keyboard player (5th); keyboard player is after violinist (1st) and before guitarist (6th); saxophonist (3rd) is after trumpeter (2nd) but not after percussionist (4th), so it follows 'after either but not both'. Other options violate at least one restriction."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C satisfies all restrictions: guitarist is sixth (not fourth); percussionist (4th) is before keyboard player (5th); keyboard player is after violinist (1st) and before guitarist (6th); saxophonist (3rd) is after trumpeter (2nd) but not after percussionist (4th), so it follows 'after either but not both'. Other options violate at least one restriction.",C,0.0,0.0,1.0,0.0,0.0
+128,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+126,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+131,"{
+  ""Reasoning"": ""In option E, screen 1 has western (7 PM) and sci-fi (9 PM). Romance must be on screen 3 (not on screen 2), leaving horror and mystery for screen 2. However, horror and mystery must be on different screens, which is impossible if both are on screen 2. This violates the condition, making E impossible. Other options can satisfy all conditions with valid schedules, so E is the only one that cannot be accurate. Confidence is high as the violation is clear."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"In option E, screen 1 has western (7 PM) and sci-fi (9 PM). Romance must be on screen 3 (not on screen 2), leaving horror and mystery for screen 2. However, horror and mystery must be on different screens, which is impossible if both are on screen 2. This violates the condition, making E impossible. Other options can satisfy all conditions with valid schedules, so E is the only one that cannot be accurate. Confidence is high as the violation is clear.",E,0.0,0.0,0.0,0.0,1.0
+133,"{
+  ""Reasoning"": ""Option E satisfies all constraints: first lecture (terns) in Gladwyn Hall, fourth lecture (oystercatchers) in Howard Auditorium, exactly three Gladwyn lectures (positions 1, 2, 5), sandpipers in Howard at position 3 and before oystercatchers at position 4, and terns before petrels at position 2 with petrels in Gladwyn. Options A-D each violate at least one constraint, such as sandpipers not before oystercatchers or incorrect venues."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"Option E satisfies all constraints: first lecture (terns) in Gladwyn Hall, fourth lecture (oystercatchers) in Howard Auditorium, exactly three Gladwyn lectures (positions 1, 2, 5), sandpipers in Howard at position 3 and before oystercatchers at position 4, and terns before petrels at position 2 with petrels in Gladwyn. Options A-D each violate at least one constraint, such as sandpipers not before oystercatchers or incorrect venues.",E,0.0,0.0,0.0,0.0,1.0
+139,"The condition that the percussionist performs before the saxophonist (P before S) implies, from the constraint that the saxophonist performs after exactly one of the percussionist or trumpeter, that the trumpeter must perform after the saxophonist (T after S). Thus, P before S before T, so P before T must be true. Options A, B, C, and E are not necessarily true, as counterexamples exist (e.g., P not first, V after S, or K before S). Confidence is high due to logical deduction.
+
+{
+  ""Reasoning"": ""Given P before S, constraint forces S before T, so P before T must hold. Other options can be false in valid sequences, e.g., V after S or K before S."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,False,True,"Given P before S, constraint forces S before T, so P before T must hold. Other options can be false in valid sequences, e.g., V after S or K before S.",D,0.0,0.0,0.0,1.0,0.0
+129,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+130,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+137,"{
+  ""Reasoning"": ""With the third lecture on sandpipers, venues are fixed: position 1 (Gladwyn Hall), position 2 (Gladwyn Hall), position 3 (Howard Auditorium, sandpipers), position 4 (Howard Auditorium), position 5 (Gladwyn Hall). Oystercatchers must be after sandpipers (positions 4 or 5). Terns must be before petrels, and petrels in Gladwyn Hall (positions 2 or 5). Option D (second lecture on terns in Gladwyn Hall) is possible if terns are at position 2 and petrels at position 5. Options A, B, C, and E violate constraints: A places oystercatchers too early; B and C have venue conflicts; E leaves no position for oystercatchers. Thus, only D could be true with high confidence."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"With the third lecture on sandpipers, venues are fixed: position 1 (Gladwyn Hall), position 2 (Gladwyn Hall), position 3 (Howard Auditorium, sandpipers), position 4 (Howard Auditorium), position 5 (Gladwyn Hall). Oystercatchers must be after sandpipers (positions 4 or 5). Terns must be before petrels, and petrels in Gladwyn Hall (positions 2 or 5). Option D (second lecture on terns in Gladwyn Hall) is possible if terns are at position 2 and petrels at position 5. Options A, B, C, and E violate constraints: A places oystercatchers too early; B and C have venue conflicts; E leaves no position for oystercatchers. Thus, only D could be true with high confidence.",D,0.0,0.0,0.0,1.0,0.0
+134,"{
+  ""Reasoning"": ""The constraints specify exactly two lectures in Howard Auditorium, with the fourth lecture fixed there. If both second and third lectures were in Howard, that would place three lectures in Howard (positions 2, 3, and 4), violating the condition of only two Howard lectures. This makes option B impossible. All other options are possible under the constraints, as shown in valid sequences."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,True,False,"The constraints specify exactly two lectures in Howard Auditorium, with the fourth lecture fixed there. If both second and third lectures were in Howard, that would place three lectures in Howard (positions 2, 3, and 4), violating the condition of only two Howard lectures. This makes option B impossible. All other options are possible under the constraints, as shown in valid sequences.",B,0.0,1.0,0.0,0.0,0.0
+135,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+136,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+143,"{
+""Reasoning"": ""Option E satisfies all constraints: oil paintings (3rd) and watercolors (2nd) before lithographs (4th); Farley (2nd) before oil paintings (3rd); Holden (1st) before Garcia (4th) and Jiang (3rd). Options A-D each violate at least one constraint, as detailed in the analysis. Confidence is high as E meets all conditions without issues."",
+""Answer"": ""E"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 0.0,
+""D"": 0.0,
+""E"": 1.0
+}",E,True,False,"Option E satisfies all constraints: oil paintings (3rd) and watercolors (2nd) before lithographs (4th); Farley (2nd) before oil paintings (3rd); Holden (1st) before Garcia (4th) and Jiang (3rd). Options A-D each violate at least one constraint, as detailed in the analysis. Confidence is high as E meets all conditions without issues.",E,0.0,0.0,0.0,0.0,1.0
+148,"{
+  ""Reasoning"": ""Option A satisfies all rules: the white rug has olive and peach (two others), olive is with peach, forest and turquoise are separate, peach and turquoise are separate, and yellow is unused so no conflict. Options B, C, D, and E violate rules: B has peach and yellow together; C has olive without peach; D has forest and turquoise together; E has white with only one other color. High confidence due to clear rule violations in others."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,True,False,"Option A satisfies all rules: the white rug has olive and peach (two others), olive is with peach, forest and turquoise are separate, peach and turquoise are separate, and yellow is unused so no conflict. Options B, C, D, and E violate rules: B has peach and yellow together; C has olive without peach; D has forest and turquoise together; E has white with only one other color. High confidence due to clear rule violations in others.",A,1.0,0.0,0.0,0.0,0.0
+140,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+141,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+142,"### Reasoning
+Given that the violinist (V) performs the fourth solo, the keyboard player (K) must be fifth and the guitarist (G) sixth due to the constraints (V before K and K before G, with G not fourth). Positions 1–3 are filled by the percussionist (P), saxophonist (S), and trumpeter (T). S must be in position 2 to satisfy ""S after exactly one of P or T but not both"" (if S is first, it can't be after anyone; if last, it would be after both). Thus, the orders for positions 1–3 are either P,S,T or T,S,P.  
+
+- **A, B, C, D must be true**: P is always before V (position 1 or 3 vs. 4), T before V (1 or 3 vs. 4), T before G (1 or 3 vs. 6), S before V (2 vs. 4).  
+- **E is not always true**: T before S only occurs in the T,S,P order (position 1 before 2), but not in P,S,T (position 3 after 2). Thus, E is not necessarily true and is the exception. Confidence is high (near 1.0) as the deduction is strict from constraints.
+
+{
+  ""Reasoning"": ""With V fourth, K must be fifth and G sixth. S must be in position 2 to satisfy 'after exactly one of P or T', leading to orders P,S,T or T,S,P for positions 1–3. Options A–D are always true (P, T, S before V; T before G), but E (T before S) is not always true—it fails in P,S,T order. High confidence due to logical necessity."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,False,True,"With V fourth, K must be fifth and G sixth. S must be in position 2 to satisfy 'after exactly one of P or T', leading to orders P,S,T or T,S,P for positions 1–3. Options A–D are always true (P, T, S before V; T before G), but E (T before S) is not always true—it fails in P,S,T order. High confidence due to logical necessity.",E,0.0,0.0,0.0,0.0,1.0
+144,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+145,"### Reasoning:
+Given watercolors is third, lithographs must be fourth (since both oil and watercolors must precede it). Oil must be second (as Farley must precede oil, and oil cannot be first). Thus, Farley must be first with sculptures. Holden must be second with oil (as he must precede Garcia and Jiang, who occupy third and fourth). Therefore, Jiang could give lithographs if he is fourth. Options A-D are impossible: Farley is first (not watercolors), Garcia cannot give oil (Holden does), Garcia cannot give sculptures (Farley does), and Holden gives oil (not sculptures). Only E could be true, with high confidence.
+
+### JSON Response:
+{
+  ""Reasoning"": ""Watercolors third forces lithographs fourth; oil must be second, so Farley first (sculptures). Holden must be second (oil) to precede Garcia/Jiang in third/fourth. Jiang can give lithographs if fourth. A-D violate constraints."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,False,True,"Watercolors third forces lithographs fourth; oil must be second, so Farley first (sculptures). Holden must be second (oil) to precede Garcia/Jiang in third/fourth. Jiang can give lithographs if fourth. A-D violate constraints.",E,0.0,0.0,0.0,0.0,1.0
+146,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+150,"The scenario involves one solid peach rug, meaning peach is alone. Rule 2 (olive requires peach) implies olive cannot be used, as peach is isolated. Thus, the used colors are forest, peach, turquoise, white, and yellow. With peach solid, the remaining colors must be assigned to two rugs. White requires two other colors in its rug, so one rug must be multicolored with white and two others. Forest and turquoise cannot be together, so the multicolored rug cannot contain both. Possible assignments: (1) white, forest, yellow with solid turquoise, or (2) white, turquoise, yellow with solid forest. In both cases, white and yellow are together. Options A, B, C, and D are not always true, but E must hold.
+
+{
+  ""Reasoning"": ""With a solid peach rug, olive is unused. The multicolored white rug must include two from {forest, turquoise, yellow}, but forest and turquoise conflict, forcing yellow to always be with white. Thus, white and yellow must be together."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,False,True,"With a solid peach rug, olive is unused. The multicolored white rug must include two from {forest, turquoise, yellow}, but forest and turquoise conflict, forcing yellow to always be with white. Thus, white and yellow must be together.",E,0.0,0.0,0.0,0.0,1.0
+147,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+149,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+151,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+152,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+153,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+156,"{
+  ""Reasoning"": ""Option A violates the constraint that Lai and Mays must be in different ceremonies if both assigned, as they would both be in Thorne. Option C forces Lai and Mays both into Thorne due to constraints, violating the same rule. Option D separates Frost and Heideck, violating their required pairing. Option E requires Mays to be in Thorne (due to Knutson not in Thorne), but Mays is assigned to Silva, causing a conflict. Only option B satisfies all constraints with Silva: Frost, Gonzalez, Heideck; Thorne: Knutson, Lai; Mays unassigned."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,True,False,"Option A violates the constraint that Lai and Mays must be in different ceremonies if both assigned, as they would both be in Thorne. Option C forces Lai and Mays both into Thorne due to constraints, violating the same rule. Option D separates Frost and Heideck, violating their required pairing. Option E requires Mays to be in Thorne (due to Knutson not in Thorne), but Mays is assigned to Silva, causing a conflict. Only option B satisfies all constraints with Silva: Frost, Gonzalez, Heideck; Thorne: Knutson, Lai; Mays unassigned.",B,0.0,1.0,0.0,0.0,0.0
+155,"{
+  ""Reasoning"": ""Given Heideck and Lai are together at one ceremony, Frost must also be there due to the Frost-Heideck pair. If the group is at Silva, Knutson must be at Thorne to avoid forcing Heideck to Thorne when she's at Silva. If the group is at Thorne, Knutson must be at Thorne to prevent Mays from being forced to Thorne, conflicting with Lai-Mays separation. Thus, Knutson must be assigned to Thorne in all cases."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"Given Heideck and Lai are together at one ceremony, Frost must also be there due to the Frost-Heideck pair. If the group is at Silva, Knutson must be at Thorne to avoid forcing Heideck to Thorne when she's at Silva. If the group is at Thorne, Knutson must be at Thorne to prevent Mays from being forced to Thorne, conflicting with Lai-Mays separation. Thus, Knutson must be assigned to Thorne in all cases.",D,0.0,0.0,0.0,1.0,0.0
+154,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+160,"The original constraint ensures that if Knutson is not at Thorne, both Heideck and Mays must be at Thorne. Option C states that unless Knutson is at Thorne, both Frost and Mays must be at Thorne. Since Frost and Heideck must always be assigned together (from the first constraint), ""both Frost and Mays at Thorne"" is equivalent to ""both Heideck and Mays at Thorne"" because Heideck is with Frost. Thus, option C has the same effect. Other options either involve unrelated photographers (A, B, D) or are not logically equivalent (E).
+
+{
+  ""Reasoning"": ""Option C uses Frost instead of Heideck, but Frost and Heideck must be together, so it's equivalent. Other options don't ensure Heideck and Mays are at Thorne if Knutson isn't."",
+  ""Answer"": ""C"",
+  ""A"": 0.05,
+  ""B"": 0.05,
+  ""C"": 0.85,
+  ""D"": 0.05,
+  ""E"": 0.0
+}",C,False,True,"Option C uses Frost instead of Heideck, but Frost and Heideck must be together, so it's equivalent. Other options don't ensure Heideck and Mays are at Thorne if Knutson isn't.",C,0.05,0.05,0.85,0.05,0.0
+161,"{
+  ""Reasoning"": ""Option D satisfies all constraints: Villas immediately before White (positions 1-2), Quinn before Rovero (5-7), Stanton not adjacent to Tao (3 and 6), and Peters fourth. Others violate: A has Stanton-Tao adjacent, B has Villas-White not consecutive, C has Peters not fourth, E has Quinn after Rovero. High confidence as violations are clear."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"Option D satisfies all constraints: Villas immediately before White (positions 1-2), Quinn before Rovero (5-7), Stanton not adjacent to Tao (3 and 6), and Peters fourth. Others violate: A has Stanton-Tao adjacent, B has Villas-White not consecutive, C has Peters not fourth, E has Quinn after Rovero. High confidence as violations are clear.",D,0.0,0.0,0.0,1.0,0.0
+158,"The key deduction is that Knutson must be assigned to Thorne. If Knutson is not in Thorne, constraint 4 requires Heideck and Mays to be in Thorne, and with Frost and Heideck together (constraint 1), Frost must also be in Thorne. However, Thorne can only hold two photographers with exactly four assigned, leading to a contradiction. Thus, Knutson must be in Thorne. With Knutson in Thorne, Thorne has one spot left. Frost and Heideck must be assigned together and cannot fit in Thorne with Knutson, so they must be in Silva. Therefore, Frost must be assigned to Silva.
+
+{
+""Reasoning"": ""Knutson must be in Thorne to avoid contradiction with capacity and constraints. Frost and Heideck must be together and cannot fit in Thorne with Knutson, so they are in Silva, meaning Frost must be in Silva."",
+""Answer"": ""A"",
+""A"": 1.0,
+""B"": 0.0,
+""C"": 0.0,
+""D"": 0.0,
+""E"": 0.0
+}",A,False,True,"Knutson must be in Thorne to avoid contradiction with capacity and constraints. Frost and Heideck must be together and cannot fit in Thorne with Knutson, so they are in Silva, meaning Frost must be in Silva.",A,1.0,0.0,0.0,0.0,0.0
+157,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+167,"{
+  ""Reasoning"": ""Option A violates 'no Gagnon in Sports'. Option C violates 'at least one Lifestyle photographer must have a photo in Metro' as Fuentes in Lifestyle has no Metro photo. Option D violates 'Hue in Lifestyle (0) must equal Fuentes in Sports (1)'. Option E has Hue with 4 photos, exceeding the max of 3. Only option B satisfies all constraints: Hue in Lifestyle (0) equals Fuentes in Sports (0), no Gagnon in Sports, Lifestyle photographers (Fuentes and Gagnon) both have Metro photos, and each photographer has 2 photos."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,True,False,"Option A violates 'no Gagnon in Sports'. Option C violates 'at least one Lifestyle photographer must have a photo in Metro' as Fuentes in Lifestyle has no Metro photo. Option D violates 'Hue in Lifestyle (0) must equal Fuentes in Sports (1)'. Option E has Hue with 4 photos, exceeding the max of 3. Only option B satisfies all constraints: Hue in Lifestyle (0) equals Fuentes in Sports (0), no Gagnon in Sports, Lifestyle photographers (Fuentes and Gagnon) both have Metro photos, and each photographer has 2 photos.",B,0.0,1.0,0.0,0.0,0.0
+159,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+166,"**Reasoning:** With Villas immediately before White and White immediately before Quinn, V-W-Q form a consecutive block. Peters is fixed at fourth. The block cannot be in 5-6-7 because Quinn at seventh would violate ""Quinn before Rovero"" with no later position. Thus, V-W-Q must be in 1-2-3: Villas, White, Quinn. Peters is fourth. Positions 5-6-7 must hold Rovero, Stanton, and Tao, with Stanton and Tao not consecutive. Rovero must be at sixth to separate Stanton and Tao, as placing Rovero at fifth or seventh forces Stanton and Tao together, violating the condition. Therefore, sixth must be Rovero. Confidence is high due to no other valid arrangements.
+
+**Answer:** B
+
+{
+  ""Reasoning"": ""Villas-White-Quinn must be consecutive and in 1-2-3 due to Peters at fourth and Quinn before Rovero. Positions 5-6-7 require Rovero at sixth to separate Stanton and Tao, who cannot be consecutive."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,False,True,"Villas-White-Quinn must be consecutive and in 1-2-3 due to Peters at fourth and Quinn before Rovero. Positions 5-6-7 require Rovero at sixth to separate Stanton and Tao, who cannot be consecutive.",B,0.0,1.0,0.0,0.0,0.0
+168,"{
+""Reasoning"": ""With both Lifestyle photos by Hue, Hue_L=2 requires F_S=2 per the constraint, so Sports must both be Fuentes. Metro must include Hue to satisfy the Lifestyle-Metro link and Gagnon to ensure Gagnon has at least one photo, resulting in exactly one Gagnon photo. No other assignments are possible without violating constraints."",
+""Answer"": ""C"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 1.0,
+""D"": 0.0,
+""E"": 0.0
+}",C,True,False,"With both Lifestyle photos by Hue, Hue_L=2 requires F_S=2 per the constraint, so Sports must both be Fuentes. Metro must include Hue to satisfy the Lifestyle-Metro link and Gagnon to ensure Gagnon has at least one photo, resulting in exactly one Gagnon photo. No other assignments are possible without violating constraints.",C,0.0,0.0,1.0,0.0,0.0
+162,"The constraints are: Peters is fourth; Villas is immediately before White; Quinn is before Rovero; Stanton and Tao are not consecutive.
+
+- Option A: Villas is sixth, requiring White at seventh, but Quinn at second implies Rovero must be first, violating Quinn before Rovero.
+- Option B: White is sixth, requiring Villas at fifth, but Tao is fifth, violating Villas before White.
+- Option C: Villas and White are second and third, satisfying immediate succession. With Peters fourth, Quinn fifth, and Stanton sixth, Tao can be first and Rovero seventh: Quinn before Rovero (5<7), Stanton and Tao not consecutive (positions 1 and 6).
+- Option D: Villas and White are second and third, but Stanton sixth requires Tao not seventh to avoid consecutiveness; Tao must be seventh, violating Stanton-Tao constraint.
+- Option E: Quinn is fourth, but Peters must be fourth, violating Peters' position.
+
+Only option C satisfies all constraints with specific placements (Tao first, Rovero seventh).
+
+{
+  ""Reasoning"": ""Option C works with Tao at position 1 and Rovero at 7: Villas-White consecutive at 2-3, Peters at 4, Quinn before Rovero (5<7), Stanton at 6 not consecutive with Tao at 1. Others violate constraints directly."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,False,True,"Option C works with Tao at position 1 and Rovero at 7: Villas-White consecutive at 2-3, Peters at 4, Quinn before Rovero (5<7), Stanton at 6 not consecutive with Tao at 1. Others violate constraints directly.",C,0.0,0.0,1.0,0.0,0.0
+163,"{
+  ""Reasoning"": ""With Tao second, Quinn must be first due to constraints (only Quinn can be position 1). Rovero must be third since position 3 cannot be Stanton (adjacent to Tao) or Villas/White (conflict with Peters at 4). Villas-White pair must be at (5,6) or (6,7). Stanton is at 5 or 7, never 6. Option D (Villas sixth) is possible only with pair at (6,7). Other options violate constraints: A (Quinn third) impossible as Quinn is first; B (Rovero fifth) impossible as Rovero is third; C (Stanton sixth) impossible; E (White third) conflicts with Villas-White pair and Tao at 2."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"With Tao second, Quinn must be first due to constraints (only Quinn can be position 1). Rovero must be third since position 3 cannot be Stanton (adjacent to Tao) or Villas/White (conflict with Peters at 4). Villas-White pair must be at (5,6) or (6,7). Stanton is at 5 or 7, never 6. Option D (Villas sixth) is possible only with pair at (6,7). Other options violate constraints: A (Quinn third) impossible as Quinn is first; B (Rovero fifth) impossible as Rovero is third; C (Stanton sixth) impossible; E (White third) conflicts with Villas-White pair and Tao at 2.",D,0.0,0.0,0.0,1.0,0.0
+164,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+165,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+173,"### Reasoning:
+Given that Metro has one Fuentes (F) and one Hue (H), Gagnon (G) must be in Lifestyle since Sports excludes G and Metro is full. Lifestyle must include at least one photographer with a Metro photo (F or H), so it must have one G and one of F or H. Option C (one G and one H in Lifestyle) is possible: with H_L = 1, F_S must be 1 (e.g., Sports has one F and one H). Other options violate constraints: A and D omit G; B lacks a Metro connection; E requires F_S=2, but H_L cannot be 2 as Lifestyle must include G. Thus, only C could be true. Confidence is high as constraints are strict.
+
+{
+  ""Reasoning"": ""Metro has F and H, forcing G into Lifestyle, which must include F or H for Metro connection. Option C (one G, one H) is possible with H_L=1 and F_S=1. Others violate: A/D omit G; B lacks Metro link; E requires F_S=2 but H_L≤1. High confidence from constraints."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,False,True,"Metro has F and H, forcing G into Lifestyle, which must include F or H for Metro connection. Option C (one G, one H) is possible with H_L=1 and F_S=1. Others violate: A/D omit G; B lacks Metro link; E requires F_S=2 but H_L≤1. High confidence from constraints.",C,0.0,0.0,1.0,0.0,0.0
+169,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+171,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+180,"{
+  ""Reasoning"": ""With M in fall, condition 4 requires N in spring. Condition 2 then forces K to spring (same as N), and condition 1 forces P to spring (not same as M). L and O have no constraints preventing them from being in fall with M. Options A, B, D, and E violate constraints (e.g., K, N, or P cannot be in fall). Confidence is high as this is a logical deduction."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"With M in fall, condition 4 requires N in spring. Condition 2 then forces K to spring (same as N), and condition 1 forces P to spring (not same as M). L and O have no constraints preventing them from being in fall with M. Options A, B, D, and E violate constraints (e.g., K, N, or P cannot be in fall). Confidence is high as this is a logical deduction.",C,0.0,0.0,1.0,0.0,0.0
+170,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+172,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+174,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+184,"{
+  ""Reasoning"": ""Option C satisfies all constraints: Verma is leader, so no issue; Smith and Taylor are both present, meeting the Smith-Taylor requirement; Wells, Quinn, and Ruiz are absent, avoiding conflicts. Option A violates the Wells-Ruiz/Verma constraint. Option B has Quinn without leadership. Option D lacks Taylor with Smith. Option E has Wells and Verma together, which is forbidden."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C satisfies all constraints: Verma is leader, so no issue; Smith and Taylor are both present, meeting the Smith-Taylor requirement; Wells, Quinn, and Ruiz are absent, avoiding conflicts. Option A violates the Wells-Ruiz/Verma constraint. Option B has Quinn without leadership. Option D lacks Taylor with Smith. Option E has Wells and Verma together, which is forbidden.",C,0.0,0.0,1.0,0.0,0.0
+181,"{
+  ""Reasoning"": ""Given N in fall, K must be fall (same season), so O must be fall (if K fall). M cannot be fall (else N spring), so M spring. P must be different from M, so P fall. L has no constraints, so L in fall is possible. Only option B could be true; others violate conditions."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,True,False,"Given N in fall, K must be fall (same season), so O must be fall (if K fall). M cannot be fall (else N spring), so M spring. P must be different from M, so P fall. L has no constraints, so L in fall is possible. Only option B could be true; others violate conditions.",B,0.0,1.0,0.0,0.0,0.0
+175,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+185,"{
+  ""Reasoning"": ""Taylor is leader, so Quinn and Ruiz cannot be members (only if leading, constraint 1). Wells is member, so Verma cannot be (constraint 3). Smith can be since Taylor is member (constraint 2 satisfied). Xue has no constraints. Thus, only Smith or Xue are possible for the third member."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"Taylor is leader, so Quinn and Ruiz cannot be members (only if leading, constraint 1). Wells is member, so Verma cannot be (constraint 3). Smith can be since Taylor is member (constraint 2 satisfied). Xue has no constraints. Thus, only Smith or Xue are possible for the third member.",D,0.0,0.0,0.0,1.0,0.0
+176,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+177,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+178,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+189,"The constraints are: only Louis or Tiffany for 1923; if Mollie is assigned, it must be to 1921 or 1922; if Tiffany is assigned, Ryan must be assigned; if Ryan is assigned, Onyx must be in the year immediately prior. Option A violates the first constraint (Ryan in 1923). Option B violates the third constraint (Tiffany assigned but Ryan not assigned). Option D violates the fourth constraint (Ryan in 1924, but Onyx in 1922, not 1923). Option E violates the second constraint (Mollie in 1924). Only option C satisfies all constraints: Onyx in 1921 (immediately prior to Ryan in 1922), Louis in 1923 (allowed), Tiffany in 1924 (with Ryan assigned), and Mollie not assigned, so no issue. Confidence is high as violations are clear.
+
+{
+""Reasoning"": ""Option C satisfies all constraints: Louis in 1923 is allowed; Tiffany assigned with Ryan present; Ryan in 1922 with Onyx immediately prior in 1921; Mollie not assigned avoids her constraint. Others violate specific constraints clearly."",
+""Answer"": ""C"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 1.0,
+""D"": 0.0,
+""E"": 0.0
+}",C,False,True,Option C satisfies all constraints: Louis in 1923 is allowed; Tiffany assigned with Ryan present; Ryan in 1922 with Onyx immediately prior in 1921; Mollie not assigned avoids her constraint. Others violate specific constraints clearly.,C,0.0,0.0,1.0,0.0,0.0
+179,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+182,"{
+  ""Reasoning"": ""With option A, K in fall forces O and N to fall (due to constraints). N in fall prevents M from being in fall (as M fall would require N spring), so M must be spring, forcing P to fall (M and P different seasons). L in spring completes the assignment, leaving no choices. Other options allow flexibility, such as O or L seasons undetermined, so only A fully determines the schedule with high confidence."",
+  ""Answer"": ""A"",
+  ""A"": 0.98,
+  ""B"": 0.005,
+  ""C"": 0.005,
+  ""D"": 0.005,
+  ""E"": 0.005
+}",A,True,False,"With option A, K in fall forces O and N to fall (due to constraints). N in fall prevents M from being in fall (as M fall would require N spring), so M must be spring, forcing P to fall (M and P different seasons). L in spring completes the assignment, leaving no choices. Other options allow flexibility, such as O or L seasons undetermined, so only A fully determines the schedule with high confidence.",A,0.98,0.005,0.005,0.005,0.005
+183,"{
+""Reasoning"": ""The original condition 'if M is published in fall, N must be published in spring' is logically equivalent to its contrapositive: if N is published in fall, then M must be published in spring. Option B states that if N is published in fall, P must be published in fall. Since M and P cannot be in the same season, P in fall forces M to be in spring, achieving the same constraint as the contrapositive. Other options either introduce irrelevant variables (A), fail to enforce the M-N relationship (C, D), or are redundant with existing conditions (E). Confidence is high as the logic is direct and other options clearly differ."",
+""Answer"": ""B"",
+""A"": 0.01,
+""B"": 0.95,
+""C"": 0.02,
+""D"": 0.01,
+""E"": 0.01
+}",B,True,False,"The original condition 'if M is published in fall, N must be published in spring' is logically equivalent to its contrapositive: if N is published in fall, then M must be published in spring. Option B states that if N is published in fall, P must be published in fall. Since M and P cannot be in the same season, P in fall forces M to be in spring, achieving the same constraint as the contrapositive. Other options either introduce irrelevant variables (A), fail to enforce the M-N relationship (C, D), or are redundant with existing conditions (E). Confidence is high as the logic is direct and other options clearly differ.",B,0.01,0.95,0.02,0.01,0.01
+187,"### Reasoning:
+Given Taylor is not a project member, Smith cannot be a member (from constraint: if Smith is a member, Taylor must be). This leaves Quinn (Q), Ruiz (R), Verma (V), Wells (W), and Xue (X) as possible members, with exactly three to be selected. Constraints: Q or R can only be members if leader; if W is a member, neither R nor V can be. Possible teams:
+- If W is selected: team must be Q, W, X (since R and V excluded, and Q must be leader).
+- If W is not selected: teams are Q, V, X (Q leader) or R, V, X (R leader); Q and R cannot both be members due to leader conflict.
+
+In all cases (Q,W,X; Q,V,X; R,V,X), Xue is always a member. No other worker is present in every possible team. Thus, Xue must be a member. Confidence is high as the constraints eliminate other possibilities.
+
+{
+  ""Reasoning"": ""With Taylor out, Smith is out. Possible teams: (Q,W,X), (Q,V,X), or (R,V,X). Xue is in all teams; others are not always present. High confidence due to exhaustive case analysis."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,False,True,"With Taylor out, Smith is out. Possible teams: (Q,W,X), (Q,V,X), or (R,V,X). Xue is in all teams; others are not always present. High confidence due to exhaustive case analysis.",E,0.0,0.0,0.0,0.0,1.0
+195,"{
+  ""Reasoning"": ""Option C satisfies all constraints: sundial not on day 1 (day 2); H before L (day 1 < day 5) implies M before L (day 4 < day 5); S before M (day 2 < day 4) and S before V (day 2 < day 6); T before V (day 3 < day 6) but not before H (day 3 > day 1). Options A, B, D, and E violate at least one constraint, making C the only valid option. Confidence is high due to clear violations in others."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C satisfies all constraints: sundial not on day 1 (day 2); H before L (day 1 < day 5) implies M before L (day 4 < day 5); S before M (day 2 < day 4) and S before V (day 2 < day 6); T before V (day 3 < day 6) but not before H (day 3 > day 1). Options A, B, D, and E violate at least one constraint, making C the only valid option. Confidence is high due to clear violations in others.",C,0.0,0.0,1.0,0.0,0.0
+201,"{
+  ""Reasoning"": ""Option D satisfies all conditions: fourth audition (Trillo) is unrecorded, fifth (Lugo) is recorded; Waite (first) is before both recorded auditions (Kammer and Lugo); Kammer (third) before Trillo (fourth); Zinn (second) before Yoshida (sixth). Options A, B, C, and E each violate at least one condition (e.g., Waite not before Kammer in A, Zinn after Yoshida in B, fifth unrecorded in C, fourth recorded in E), so D is certain."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"Option D satisfies all conditions: fourth audition (Trillo) is unrecorded, fifth (Lugo) is recorded; Waite (first) is before both recorded auditions (Kammer and Lugo); Kammer (third) before Trillo (fourth); Zinn (second) before Yoshida (sixth). Options A, B, C, and E each violate at least one condition (e.g., Waite not before Kammer in A, Zinn after Yoshida in B, fifth unrecorded in C, fourth recorded in E), so D is certain.",D,0.0,0.0,0.0,1.0,0.0
+186,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+188,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+190,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+191,"**Reasoning:** With both Ryan and Yoshio assigned, Ryan must be in 1922 (as he cannot be in 1921, 1923, or 1924 due to constraints). This requires Onyx in 1921 (immediately prior). Yoshio must then be in 1924, as 1923 must be Louis or Tiffany. Thus, Louis can be assigned to 1923, making option A possible. Options B, C, D, and E conflict with the fixed assignments: B (Mollie cannot be in 1921 as it is Onyx), C (Onyx must be in 1921, not 1922), D (1924 is Yoshio, not Tiffany), E (1922 is Ryan, not Yoshio). Confidence is high as the assignments are strictly determined.
+
+{
+  ""Reasoning"": ""With Ryan and Yoshio assigned, Ryan must be in 1922, forcing Onyx to 1921 and Yoshio to 1924; 1923 must be Louis or Tiffany, so Louis can be there. Other options violate assignments."",
+  ""Answer"": ""A"",
+  ""A"": 1.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",A,False,True,"With Ryan and Yoshio assigned, Ryan must be in 1922, forcing Onyx to 1921 and Yoshio to 1924; 1923 must be Louis or Tiffany, so Louis can be there. Other options violate assignments.",A,1.0,0.0,0.0,0.0,0.0
+192,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+193,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+194,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+196,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+197,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+207,"{
+  ""Reasoning"": ""Option C satisfies all constraints: Juana and Olga are on different teams (Juana red, Olga green), Lateefah is on green, Kelly is not facilitator (Olga is facilitator on green), and Olga is facilitator. Teams have 3 and 2 members with one facilitator each. Options A, B, D, and E violate constraints (e.g., same team for Juana/Olga in A, Olga not facilitator in B, Lateefah not on green in D, Kelly facilitator in E)."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C satisfies all constraints: Juana and Olga are on different teams (Juana red, Olga green), Lateefah is on green, Kelly is not facilitator (Olga is facilitator on green), and Olga is facilitator. Teams have 3 and 2 members with one facilitator each. Options A, B, D, and E violate constraints (e.g., same team for Juana/Olga in A, Olga not facilitator in B, Lateefah not on green in D, Kelly facilitator in E).",C,0.0,0.0,1.0,0.0,0.0
+198,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+199,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+200,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+208,"{
+  ""Reasoning"": ""There are only two facilitator positions; Olga is one, so only one other can be facilitator. Kelly cannot be, so the other must be Juana, Lateefah, or Mei. Thus, Juana and Mei cannot both be facilitators, making D always true. Other options depend on team assignments and are not certain."",
+  ""Answer"": ""D"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 1.0,
+  ""E"": 0.0
+}",D,True,False,"There are only two facilitator positions; Olga is one, so only one other can be facilitator. Kelly cannot be, so the other must be Juana, Lateefah, or Mei. Thus, Juana and Mei cannot both be facilitators, making D always true. Other options depend on team assignments and are not certain.",D,0.0,0.0,0.0,1.0,0.0
+210,"{
+  ""Reasoning"": ""Since Lateefah and Olga are both facilitators, they must be on different teams. Lateefah is on green, so Olga must be on red. Juana must be on green as she differs from Olga. Options A, B, C, and D conflict with these assignments and are impossible. Option E could be true if Mei is assigned to red with Olga, which is possible in valid team size configurations."",
+  ""Answer"": ""E"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 1.0
+}",E,True,False,"Since Lateefah and Olga are both facilitators, they must be on different teams. Lateefah is on green, so Olga must be on red. Juana must be on green as she differs from Olga. Options A, B, C, and D conflict with these assignments and are impossible. Option E could be true if Mei is assigned to red with Olga, which is possible in valid team size configurations.",E,0.0,0.0,0.0,0.0,1.0
+202,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+203,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+204,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+212,"### Reasoning:
+Option D is the only one that satisfies all constraints:  
+- T not in chapter 1 (position 3).  
+- T before W with exactly two chapters between (T in 3, W in 6, with chapters 4 and 5 separating).  
+- S and Z not adjacent (positions 4 and 7).  
+- W and X not adjacent (positions 1 and 6).  
+- U and X adjacent (positions 1 and 2).  
+Options A, B, C, and E each violate at least one constraint (e.g., A has incorrect T-W gap, B has T in ch1, C has U-X not adjacent, E has W-X adjacent). Confidence is high as this is a logical deduction with clear violations in other options.
+
+{
+""Reasoning"": ""Option D satisfies all constraints: T not ch1; T before W with exactly two chapters between (ch3 and ch6); S and Z not adjacent (ch4 and ch7); W and X not adjacent (ch1 and ch6); U and X adjacent (ch1 and ch2). Others fail: A has T-W gap error, B has T in ch1, C has U-X not adjacent, E has W-X adjacent."",
+""Answer"": ""D"",
+""A"": 0.0,
+""B"": 0.0,
+""C"": 0.0,
+""D"": 1.0,
+""E"": 0.0
+}",D,False,True,"Option D satisfies all constraints: T not ch1; T before W with exactly two chapters between (ch3 and ch6); S and Z not adjacent (ch4 and ch7); W and X not adjacent (ch1 and ch6); U and X adjacent (ch1 and ch2). Others fail: A has T-W gap error, B has T in ch1, C has U-X not adjacent, E has W-X adjacent.",D,0.0,0.0,0.0,1.0,0.0
+205,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+206,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+211,"{
+  ""Reasoning"": ""With Mei on green, green must have three members (Lateefah and Mei plus one more) to avoid Juana and Olga being on the same team, which is prohibited. Juana and Olga must be on different teams, so one is on green and one on red. Kelly must be on red in both scenarios to fill the two-member red team, as green's third member is occupied by either Juana or Olga."",
+  ""Answer"": ""B"",
+  ""A"": 0.0,
+  ""B"": 1.0,
+  ""C"": 0.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",B,True,False,"With Mei on green, green must have three members (Lateefah and Mei plus one more) to avoid Juana and Olga being on the same team, which is prohibited. Juana and Olga must be on different teams, so one is on green and one on red. Kelly must be on red in both scenarios to fill the two-member red team, as green's third member is occupied by either Juana or Olga.",B,0.0,1.0,0.0,0.0,0.0
+209,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+213,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+214,"**Reasoning:** With U in chapter 3,",,False,False,,,0.0,0.0,0.0,0.0,0.0
+215,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+216,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+217,"The original constraint ""T cannot be in chapter 1"" prevents T from being in position 1, which is necessary because if T were in 1, W would have to be in 4 due to the ""exactly two chapters between"" rule. Option B, ""W cannot be mentioned in chapter 4,"" directly prevents W from being in 4, which indirectly forces T out of chapter 1 without adding extra constraints. This has the same effect on determining the clue order, as it maintains the possible (T,W) pairs as (2,5), (3,6), or (4,7). Other options either fail to prevent T in chapter 1 (A, C, E) or add unrelated restrictions (D, which forces U before T, altering possible sequences).
+
+{
+  ""Reasoning"": ""Option B prevents W in ch4, which implies T cannot be in ch1 due to the T-W separation constraint, mirroring the original effect without extra restrictions. Options A, C, and E don't prevent T in ch1, and D adds a new U-T order constraint."",
+  ""Answer"": ""B"",
+  ""A"": 0.05,
+  ""B"": 0.9,
+  ""C"": 0.01,
+  ""D"": 0.03,
+  ""E"": 0.01
+}",B,False,True,"Option B prevents W in ch4, which implies T cannot be in ch1 due to the T-W separation constraint, mirroring the original effect without extra restrictions. Options A, C, and E don't prevent T in ch1, and D adds a new U-T order constraint.",B,0.05,0.9,0.01,0.03,0.01
+218,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+219,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+225,"{
+  ""Reasoning"": ""Option C is valid because Southco trades the Lynch Building (class 2) to RealProp for the Yates House and Zimmer House (both class 3), which matches trade rule 3: one class 2 building for two class 3 buildings. Trustcorp remains unchanged. Options A, B, D, and E violate trade rules: A involves an invalid exchange of class 1 for class 3; B requires multiple trades; D and E involve unequal or mismatched class trades not covered by the rules."",
+  ""Answer"": ""C"",
+  ""A"": 0.0,
+  ""B"": 0.0,
+  ""C"": 1.0,
+  ""D"": 0.0,
+  ""E"": 0.0
+}",C,True,False,"Option C is valid because Southco trades the Lynch Building (class 2) to RealProp for the Yates House and Zimmer House (both class 3), which matches trade rule 3: one class 2 building for two class 3 buildings. Trustcorp remains unchanged. Options A, B, D, and E violate trade rules: A involves an invalid exchange of class 1 for class 3; B requires multiple trades; D and E involve unequal or mismatched class trades not covered by the rules.",C,0.0,0.0,1.0,0.0,0.0
+220,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+221,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+222,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+223,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+224,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+226,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+227,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+228,,,False,False,,,0.0,0.0,0.0,0.0,0.0
+229,,,False,False,,,0.0,0.0,0.0,0.0,0.0

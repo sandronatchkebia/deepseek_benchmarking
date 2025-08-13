@@ -34,9 +34,12 @@ DATASETS = [
     "sciq_test"
 ]
 
-SAVE_DIR = "data/full/deepseek_r1"
-os.makedirs(SAVE_DIR, exist_ok=True)
+DATASETS = [
+    "sciq_test"
+]
 
+SAVE_DIR = "../data/full/deepseek_r1"
+#os.makedirs(SAVE_DIR, exist_ok=True)
 
 def download_prompt_csv(dataset_name):
     url = f"{GITHUB_PROMPT_BASE}/{dataset_name}_formatted.csv"
@@ -512,8 +515,10 @@ async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=12
     raise last_exc if last_exc else RuntimeError("Unknown error without exception")
 
 
-async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=MODEL_NAME, concurrency=8, request_timeout=120):
+async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=MODEL_NAME, concurrency=16, request_timeout=120):
     results = []
+    max_token_hits = 0
+    abort_on_token_limit = True  # Set to False if you want to continue despite token limits
 
     print(f"\n▶ Running: {dataset_name} on {model} ({len(prompts_df)} prompts) [concurrency={concurrency}]\n")
 
@@ -521,33 +526,76 @@ async def run_on_deepseek_async(dataset_name, prompts_df, system_prompt, model=M
     pbar = tqdm(total=len(prompts_df), desc=f"Processing {dataset_name}")
 
     async def process_row(i, row):
+        nonlocal max_token_hits
         qid = row["Question ID"]
         user_prompt = row["Full Prompt"]
+        
+        # Check if we should abort due to token limits
+        if abort_on_token_limit and max_token_hits > 0:
+            return None  # Skip processing if we've hit token limits
+            
         try:
             response = await _call_with_retry(system_prompt, user_prompt, model, semaphore=semaphore, qid=qid)
+            
+            # Check if response hit token limit
+            if response.choices[0].finish_reason == "length":
+                max_token_hits += 1
+                print(f"\n⚠️  QID {qid} hit max_token limit (total: {max_token_hits})")
+                
+                # If this is the first token limit hit and we want to abort, stop processing
+                if abort_on_token_limit and max_token_hits == 1:
+                    print(f"\n🚨 Aborting processing due to token limit hit. Saving partial results...")
+                    return "ABORT_TOKEN_LIMIT"
+            
             results.append({
                 "question_id": qid,
                 "prompt": user_prompt,
                 "response": response.choices[0].message.content,
                 "raw_response": response.model_dump()
             })
+            return "SUCCESS"
+            
         except Exception as e:
             results.append({
                 "question_id": qid,
                 "error": str(e)
             })
+            return "ERROR"
         finally:
             pbar.update(1)
 
-    # Schedule all tasks
-    tasks = [process_row(i, row) for i, row in prompts_df.iterrows()]
-    await asyncio.gather(*tasks)
+    # Process rows one by one to check for early abort
+    for i, row in prompts_df.iterrows():
+        result = await process_row(i, row)
+        
+        # Check if we should abort
+        if result == "ABORT_TOKEN_LIMIT":
+            break
+    
     pbar.close()
 
-    outpath = os.path.join(SAVE_DIR, f"{dataset_name}_{model}_reasoning_results.json")
+    # Determine output filename based on completion status
+    if max_token_hits > 0:
+        outpath = os.path.join(SAVE_DIR, f"{dataset_name}_{model}_reasoning_results__incomplete.json")
+        print(f"\n⚠️  Processing stopped early due to {max_token_hits} token limit hits")
+        print(f"   Completed: {len(results)} queries")
+        print(f"   Remaining: {len(prompts_df) - len(results)} queries")
+    else:
+        outpath = os.path.join(SAVE_DIR, f"{dataset_name}_{model}_reasoning_results.json")
+        print(f"\n✅ All {len(results)} queries completed successfully")
+
+    # Save results
     with open(outpath, "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\n💾 Saved: {outpath}\n")
+    print(f"\n💾 Saved: {outpath}")
+    
+    # Print final summary
+    print(f"\n📊 Final Summary:")
+    print(f"   Total queries: {len(prompts_df)}")
+    print(f"   Successfully completed: {len(results)}")
+    print(f"   Hit max_token limit: {max_token_hits}")
+    if max_token_hits > 0:
+        print(f"   ⚠️  {max_token_hits} queries may have incomplete responses")
 
 
 async def async_main():
