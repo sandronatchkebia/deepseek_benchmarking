@@ -58,6 +58,15 @@ data/otherllms/
 # Exclude metadata and sample files
 data/samples/
 
+# Include parsed data (backfill, deepseek_r1, deepseek_v3)
+!data/parsed/backfill/
+!data/parsed/deepseek_r1/
+!data/parsed/deepseek_v3/
+
+# Include processed data (everything except backfill subdirectory)
+!data/processed/
+data/processed/*/backfill/
+
 # Logs
 *.log
 

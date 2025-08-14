@@ -13,29 +13,45 @@ This repository contains tools and parsed results for analyzing LLM confidence c
 - **Logprob Extraction**: Extracts token-level probabilities and alternative token considerations
 - **Token Limit Monitoring**: Tracks and reports queries that hit max_token limits
 - **Early Abort Protection**: Stops processing when token limits are exceeded to prevent incomplete results
+- **Intelligent Backfill System**: Automatically re-runs inference on incomplete responses with progressive token limit increases
 - **Flexible Output**: Generates wide-format CSV files compatible with analysis tools
 - **Cross-dataset Compatibility**: Produces outputs similar to reference GPT-4o parsed results
+- **Complete Data Recovery**: Ensures 100% completion rates through automated backfill processing
 
 ## 📁 Repository Structure
 
 ```
 ├── parsing/                          # Parsing scripts organized in dedicated folder
 │   ├── deepseek_parsing.py          # Main parsing script for V3 model (with logprobs)
-│   └── deepseek_parsing_reasoning.py # Parsing script for R1 model (reasoning only)
+│   ├── deepseek_parsing_reasoning.py # Parsing script for R1 model (reasoning only)
+│   └── merging_backfill.py          # Script to merge backfill data with original parsed files
 ├── inference/
-│   └── deepseek.py                  # Async inference script with token limit protection
+│   ├── deepseek.py                  # Async inference script with token limit protection
+│   └── deepseek_backfill.py         # Backfill script for incomplete responses with retry logic
 ├── data/
-│   └── parsed/                      # Parsed CSV outputs organized by model version
-│       ├── deepseek_v3/             # DeepSeek v3 model results (with logprobs)
-│       │   ├── sat_en_deepseek-chat_results_wide.csv
-│       │   ├── lsat_ar_test_deepseek-chat_results_wide.csv
-│       │   ├── sciq_test_deepseek-chat_results_wide.csv
-│       │   ├── halu_eval_qa_deepseek-chat_results_wide.csv
-│       │   ├── life_eval_deepseek-chat_results_wide.csv
-│       │   └── boolq_valid_deepseek-chat_results_wide.csv
-│       └── deepseek_r1/             # DeepSeek R1 model results (reasoning only)
-│           ├── sat_en_deepseek-reasoner_reasoning_results_wide.csv
-│           └── lsat_ar_test_deepseek-reasoner_reasoning_results_wide.csv
+│   ├── parsed/                      # Parsed CSV outputs organized by model version
+│   │   ├── deepseek_v3/             # DeepSeek v3 model results (with logprobs)
+│   │   │   ├── sat_en_deepseek-chat_results_wide.csv
+│   │   │   ├── lsat_ar_test_deepseek-chat_results_wide.csv
+│   │   │   ├── sciq_test_deepseek-chat_results_wide.csv
+│   │   │   ├── halu_eval_qa_deepseek-chat_results_wide.csv
+│   │   │   ├── life_eval_deepseek-chat_results_wide.csv
+│   │   │   └── boolq_valid_deepseek-chat_results_wide.csv
+│   │   ├── deepseek_r1/             # DeepSeek R1 model results (reasoning only)
+│   │   │   ├── sat_en_deepseek-reasoner_reasoning_results_wide.csv
+│   │   │   ├── lsat_ar_test_deepseek-reasoner_reasoning_results_wide.csv
+│   │   │   ├── sciq_test_deepseek-reasoner_reasoning_results_wide.csv
+│   │   │   ├── halu_eval_qa_deepseek-reasoner_reasoning_results_wide.csv
+│   │   │   ├── life_eval_deepseek-reasoner_reasoning_results__incomplete_wide.csv
+│   │   │   └── boolq_valid_deepseek-reasoner_reasoning_results__incomplete_wide.csv
+│   │   └── backfill/                # Backfill data for incomplete responses
+│   │       ├── life_eval_backfill_results_wide.csv
+│   │       ├── lsat_ar_test_backfill_results_wide.csv
+│   │       └── boolq_valid_backfill_results_wide.csv
+│   └── processed/                   # Final processed tables with correct answers
+│       ├── deepseek_r1/             # Processed DeepSeek R1 results
+│       ├── deepseek_v3/             # Processed DeepSeek V3 results
+│       └── [other_models]/          # Processed results from other LLMs
 └── README.md
 ```
 
@@ -67,6 +83,12 @@ python3 parsing/deepseek_parsing_reasoning.py --infile <input_file> --dataset <d
 
 # Parse with custom output directory
 python3 parsing/deepseek_parsing.py --infile <input_file> --dataset <dataset_name> --model <model_name> --output_dir data/parsed/deepseek_v3
+
+# Run backfill to recover incomplete responses
+python3 inference/deepseek_backfill.py
+
+# Merge backfill data with original parsed files
+python3 parsing/merging_backfill.py
 ```
 
 ### Examples
@@ -86,7 +108,7 @@ python3 parsing/deepseek_parsing_reasoning.py --infile path/to/lsat_ar_test_deep
 - `--model`: Model label (default: deepseek-chat for V3, deepseek-r1 for R1)
 - `--output_dir`: Custom output directory (optional)
 
-## 🚨 Token Limit Protection
+## 🚨 Token Limit Protection & Backfill System
 
 ### Inference Script Features
 
@@ -96,6 +118,16 @@ The `inference/deepseek.py` script now includes intelligent token limit protecti
 - **Early Abort**: Stops processing when first token limit is hit
 - **Partial Results**: Saves completed queries with `__incomplete` suffix
 - **Comprehensive Reporting**: Shows completion statistics and token limit hits
+
+### Backfill System Features
+
+The `inference/deepseek_backfill.py` script provides intelligent recovery of incomplete responses:
+
+- **Automatic Detection**: Identifies questions with incomplete responses due to token limits
+- **Progressive Retry Logic**: Uses increasing token limits (8K → 16K → 32K) across 3 attempts
+- **Targeted Processing**: Only re-runs inference on problematic questions
+- **Complete Recovery**: Achieves 100% completion rates for all datasets
+- **Smart Merging**: Seamlessly integrates backfill data with original parsed files
 
 ### Parsing Script Features
 
@@ -134,7 +166,9 @@ Both parsing scripts now provide token limit analysis:
 Results are organized by model version to facilitate comparison and analysis:
 
 - **`deepseek_v3/`: Current DeepSeek v3 model results (6 datasets with logprobs)
-- **`deepseek_r1/`: DeepSeek R1 model results (2 datasets, reasoning focus)
+- **`deepseek_r1/`: DeepSeek R1 model results (6 datasets, reasoning focus, 100% completion rate)
+- **`backfill/`: Recovered incomplete responses with progressive token limit increases
+- **`processed/`: Final tables with correct answers for accuracy analysis
 
 ## 🔍 Output Format
 
