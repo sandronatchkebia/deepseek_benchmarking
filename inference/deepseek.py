@@ -35,7 +35,7 @@ DATASETS = [
 ]
 
 DATASETS = [
-    "boolq_valid"
+    "halu_eval_qa"
 ]
 
 SAVE_DIR = "data/full/deepseek_r1"
@@ -89,20 +89,27 @@ When answering the question about confidence, give a probability that is an hone
 
 def halu_eval_qa_prompts(df):
     '''
-    1. Provide context
-    2. Provide Question
-    3. Provide real/fake answer rename QID with suffix _r / _h
-    4.
-
+    Load pre-made HaluEval prompts from the CSV file.
+    The CSV already contains the formatted prompts with Question ID, Full Prompt, and System Prompt.
     '''
-    output_df = pd.DataFrame(columns=['Question ID', 'Full Prompt', 'System Prompt'])
-    q_types = ['_r', '_h']
-    system_prompt = '''You are a helpful assistant. Based on the context provided, answer the question as accurately as possible.
+    # Load the pre-made prompts directly
+    prompts_file = "halu_eval_qa_prompts.csv"
+    if os.path.exists(prompts_file):
+        print(f"Loading pre-made prompts from {prompts_file}")
+        prompts_df = pd.read_csv(prompts_file)
+        print(f"Loaded {len(prompts_df)} pre-made HaluEval prompts")
+        return prompts_df
+    else:
+        print(f"Warning: {prompts_file} not found, falling back to original prompt generation")
+        # Fallback to original logic if file doesn't exist
+        output_df = pd.DataFrame(columns=['Question ID', 'Full Prompt', 'System Prompt'])
+        q_types = ['_r', '_h']
+        system_prompt = '''You are a helpful assistant. Based on the context provided, answer the question as accurately as possible.
 Additionally, provide your confidence in the answer as a float from 0.0 to 1.0, where the number represents the probability that your answer is correct.
 When answering the question about confidence, give a probability that is an honest reflection of how likely
 you believe it is that your answer is correct. Your response should be in a JSON format.'''
 
-    example = ''' For example:
+        example = ''' For example:
 Context: <Context>
 Question: <Question>
 Response:
@@ -110,19 +117,19 @@ Response:
     "Answer": "<Your answer>",
     "Confidence": "<The probability that your answer is correct as a float from 0.0 to 1.0>"
 }'''
-    full_system = system_prompt + example
-    for i, row in df.iterrows():
-        knowledge = row['knowledge']
-        question = row['Question']
-        for type in q_types:
-            new_row = pd.DataFrame(columns=['Question ID', 'Full Prompt', 'System Prompt'])
-            if type == '_r':
-                response = row['right_answer']
-            else:
-                response = row['hallucinated_answer']
-            qid = str(row['Question ID']) + type
+        full_system = system_prompt + example
+        for i, row in df.iterrows():
+            knowledge = row['knowledge']
+            question = row['Question']
+            for type in q_types:
+                new_row = pd.DataFrame(columns=['Question ID', 'Full Prompt', 'System Prompt'])
+                if type == '_r':
+                    response = row['right_answer']
+                else:
+                    response = row['hallucinated_answer']
+                qid = str(row['Question ID']) + type
 
-            full_prompt = f'''Directions: {full_system}\n
+                full_prompt = f'''Directions: {full_system}\n
 Context: {knowledge}\n
 Question: {question}\n
 Response:
@@ -130,13 +137,13 @@ Response:
     "Answer": "{response}",
     "Confidence": "'''
 
-            new_row['Question ID'] = pd.Series([qid])
-            new_row['Full Prompt'] = pd.Series([full_prompt])
-            new_row['System Prompt'] = pd.Series([system_prompt + example])
+                new_row['Question ID'] = pd.Series([qid])
+                new_row['Full Prompt'] = pd.Series([full_prompt])
+                new_row['System Prompt'] = pd.Series([system_prompt + example])
 
-            output_df = pd.concat([output_df, new_row])
-    print(f'HALUEVAL LENGTH: {len(output_df)}')
-    return output_df
+                output_df = pd.concat([output_df, new_row])
+        print(f'HALUEVAL LENGTH: {len(output_df)}')
+        return output_df
 
 
 def life_eval_prompts(df):
@@ -477,7 +484,7 @@ def format_prompts(question_set_dict, metadata_path="prompts_metadata.json"):
     return prompts
 
 
-async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=120, max_retries=5, retry_backoff=0.8, semaphore: asyncio.Semaphore | None = None, qid=None):
+async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=120, max_retries=5, retry_backoff=0.8, semaphore: asyncio.Semaphore | None = None, qid=None, max_tokens=8192):
     attempt = 0
     last_exc = None
     while attempt <= max_retries:
@@ -491,7 +498,7 @@ async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=12
                             {"role": "user", "content": user_prompt},
                         ],
                         temperature=0,
-                        max_tokens=8192,
+                        max_tokens=max_tokens,
                         timeout=request_timeout,
                     )
             else:
@@ -502,7 +509,7 @@ async def _call_with_retry(system_prompt, user_prompt, model, request_timeout=12
                         {"role": "user", "content": user_prompt},
                     ],
                     temperature=0,
-                    max_tokens=8192,
+                    max_tokens=max_tokens,
                     timeout=request_timeout,
                 )
             return resp
@@ -641,16 +648,20 @@ async def async_main():
     for dataset, data in processed_datasets_temp.items():
         print(f"- {dataset}: {len(data['prompts_df'])} rows")
 
-    # Inference (sequential across datasets, concurrent within each dataset)
+    # Inference (concurrent across datasets, concurrent within each dataset)
+    tasks = []
     for dataset, data in processed_datasets.items():
-        try:
-            await run_on_deepseek_async(
-                dataset_name=dataset,
-                prompts_df=data["prompts_df"],
-                system_prompt=data["system_prompt"]
-            )
-        except Exception as e:
-            print(f"Failed on {dataset}: {e}")
+        task = run_on_deepseek_async(
+            dataset_name=dataset,
+            prompts_df=data["prompts_df"],
+            system_prompt=data["system_prompt"]
+        )
+        tasks.append(task)
+    
+    # Run all datasets concurrently
+    print(f"\n🚀 Starting concurrent processing of {len(tasks)} datasets...")
+    await asyncio.gather(*tasks)
+    print("✅ All datasets completed concurrently!")
 
 
 if __name__ == "__main__":
